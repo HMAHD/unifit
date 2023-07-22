@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+// ignore: camel_case_types
 class introPage extends StatelessWidget {
   const introPage({super.key});
 

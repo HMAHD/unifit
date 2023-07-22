@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/intro_page.dart';
+import 'package:unifit/pages/intro_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 
