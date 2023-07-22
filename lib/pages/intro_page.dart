@@ -8,6 +8,7 @@ class introPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      
         body: Column(children: [
       Expanded(
         flex: 2,
