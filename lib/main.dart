@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splash_answer/pages/spalsh_page.dart';
+import 'package:unifit/pages/intro_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: splashPage(),
+      home: introPage(),
     );
   }
 }

@@ -11,14 +11,12 @@ class introPage extends StatelessWidget {
         body: Column(children: [
       Expanded(
         flex: 2,
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
-          color: const Color.fromARGB(255, 255, 255, 255),
           child: Center(
-            child: Container(
-              color: Colors.blue,
-              height: 100,
-              width: 100,
+            child: Image.asset(
+              "assets/unifit_logo.png",
+              width: size.width / 1,
             ),
           ),
         ),
@@ -27,33 +25,8 @@ class introPage extends StatelessWidget {
         flex: 1,
         child: Container(
           width: double.infinity,
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: Colors.white,
           alignment: Alignment.bottomCenter,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Text(
-                'NSBM',
-                style: TextStyle(fontSize: 40),
-              ),
-              Container(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                height: 50,
-                width: size.width / 2,
-                // ignore: prefer_const_constructors
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Square(),
-                    Square(),
-                    Square(),
-                    Square(),
-                    Square(),
-                  ],
-                ),
-              )
-            ],
-          ),
         ),
       ),
     ]));
@@ -61,24 +34,24 @@ class introPage extends StatelessWidget {
 }
 
 class Square extends StatelessWidget {
-  const Square({
+  final Color color;
+
+  const Square(
+    this.color, {
     super.key,
   });
 
-  // ignore: empty_constructor_bodies
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Container(
-            height: 20,
-            color: Color.fromARGB(255, 58, 255, 127),
-          ),
+        child: Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          color: color,
         ),
       ),
-    );
+    ));
   }
 }
