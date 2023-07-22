@@ -22,10 +22,11 @@ class introPage extends StatelessWidget {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 1,  
         child: Container(
-          width: double.infinity,
-          color: Colors.white,
+          width: 400,
+          height: 50,
+          color: const Color.fromARGB(255, 88, 84, 98),
           alignment: Alignment.bottomCenter,
         ),
       ),
