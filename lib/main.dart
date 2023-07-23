@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/edit_profile.dart';
 import 'package:unifit/pages/settings.dart';
 
