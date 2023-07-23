@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/edit_profile.dart';
+import 'package:unifit/pages/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: EditProfile(),
+      home: Settings(),
     );
   }
 }
