@@ -11,75 +11,96 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    double devHeight = MediaQuery.of(context).size.height;
+    double devWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 90,
-          ),
-          Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: const Color.fromRGBO(70, 245, 202, 1),
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: devHeight * 0.05,
             ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-                  const Text(
-                    "Edit Profile",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0),
+            Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromRGBO(70, 245, 202, 1),
+              ),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+                    const Text(
+                      "Edit Profile",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
                     ),
-                  ),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.account_box)),
-                ],
+                    IconButton(onPressed: () {}, icon: Icon(Icons.account_box)),
+                  ],
+                ),
               ),
             ),
-          ),
-          // const SizedBox(
-          //   width: 250,
-          // ),
-          SizedBox(
-            height: 50,
-          ),
-          CustomTextField(
-            icon: Icon(Icons.person),
-            title: 'User name',
-            isObscure: false,
-            hint: "Enter Your User Name",
-          ),
-          CustomTextField(
-            icon: Icon(Icons.password),
-            title: 'Password',
-            isObscure: true,
-            hint: "Enter Your Password",
-          ),
-          CustomTextField(
-            icon: Icon(Icons.phone),
-            title: 'Phone Number',
-            isObscure: false,
-            hint: "Enter Your Number",
-          ),
-          //CustomTextField(),
-          SizedBox(width: 500),
-          ElevatedButton(
-              onPressed: () {},
+            // const SizedBox(
+            //   width: 250,
+            // ),
+            SizedBox(
+              height: devHeight * 0.05,
+            ),
+            const CustomTextField(
+              icon: Icon(Icons.person),
+              title: 'Full Name',
+              isObscure: false,
+              hint: "Enter Your Full Name",
+            ),
+            SizedBox(
+              height: devHeight * 0.005,
+            ),
+            const CustomTextField(
+              icon: Icon(Icons.email_outlined),
+              title: 'E-mail',
+              isObscure: false,
+              hint: "Enter Your Email",
+            ),
+            SizedBox(
+              height: devHeight * 0.005,
+            ),
+            const CustomTextField(
+              icon: Icon(Icons.phone),
+              title: 'Email',
+              isObscure: false,
+              hint: "Enter Your Number",
+            ),
+
+            SizedBox(
+              height: devHeight * 0.05,
+            ),
+
+            ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(300, 50),
-                  primary: const Color.fromRGBO(25, 164, 156, 1)),
-              child: const Text(
-                ' Elevated Button',
-                style: TextStyle(
-                  fontSize: 15,
+                elevation: 3.5,
+                minimumSize: const Size(330, 60),
+                backgroundColor: Color.fromRGBO(70, 245, 202, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-              ))
-        ],
+              ),
+              onPressed: () {},
+              child: const Text(
+                "Submit",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
