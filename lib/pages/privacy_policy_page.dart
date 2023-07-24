@@ -8,6 +8,8 @@ class Privacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<Privacy> {
+  String balance = '\$500.00';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,27 @@ class _PrivacyState extends State<Privacy> {
         children: [
           const SizedBox(height: 35), // Empty space before the AppBar
           getCustomAppBar(context), // Custom AppBar
-          // Add other content of the page below the AppBar
+          const SizedBox(height: 20), // Empty space between AppBar and balance widget
+          const Center(
+            child: Text(
+              'Your Balance',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Center(
+            child: Text(
+              balance,
+              style: const TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -23,8 +45,7 @@ class _PrivacyState extends State<Privacy> {
 
   PreferredSizeWidget getCustomAppBar(BuildContext context) {
     return PreferredSize(
-      preferredSize:
-          const Size.fromHeight(140.0), // Set the preferred height for the AppBar
+      preferredSize: const Size.fromHeight(140.0),
       child: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.menu),
@@ -32,9 +53,9 @@ class _PrivacyState extends State<Privacy> {
           onPressed: () {},
         ),
         title: const Text(
-          "Diposite",
+          "Deposit",
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 30.0,
             fontWeight: FontWeight.bold,
           ),
@@ -48,7 +69,7 @@ class _PrivacyState extends State<Privacy> {
             onPressed: () {},
           ),
         ],
-        titleSpacing: 00.0,
+        titleSpacing: 0.0,
         centerTitle: true,
         toolbarHeight: 100.2,
         toolbarOpacity: 0.8,
@@ -66,3 +87,5 @@ class _PrivacyState extends State<Privacy> {
     );
   }
 }
+
+ 
