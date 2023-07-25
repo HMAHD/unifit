@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:unifit/pages/intro_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
+import 'package:unifit/pages/credit.dart';
+import 'package:unifit/pages/edit_profile.dart';
+import 'package:unifit/pages/reload.dart';
+import 'package:unifit/pages/settings.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -16,6 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: IntroPage(),
+      debugShowCheckedModeBanner: false,
+      home: Credit(),
     );
   }
+}

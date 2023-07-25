@@ -91,7 +91,7 @@ class _SettingsState extends State<Settings> {
               ),
               onPressed: () {},
               child: const Text(
-                "Submit",
+                "Back to Home",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
