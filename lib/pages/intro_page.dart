@@ -8,6 +8,7 @@ class introPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 236, 234, 239),
         ),
@@ -23,14 +24,19 @@ class introPage extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              height: 50,
-              color: const Color.fromARGB(255, 236, 234, 239),
-              alignment: Alignment.bottomCenter,
-            ),
+          const SizedBox(
+            height: 25,
           ),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: Container(
+              height: 250,
+              color: Colors.black,
+            ),
+          )
         ]));
   }
 }
