@@ -25,18 +25,16 @@ class introPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 10,
           ),
           ClipRRect(
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
+              topLeft: Radius.circular(120),
+              topRight: Radius.circular(120),
             ),
             child: Container(
-              height: 250,
-              color: Colors.black,
-            ),
-          )
+                height: 120, color: const Color.fromRGBO(221, 244, 238, 5)),
+          ),
         ]));
   }
 }
