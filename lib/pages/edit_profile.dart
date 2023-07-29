@@ -32,7 +32,7 @@ class _EditProfileState extends State<EditProfile> {
           onPressed: () {},
         ),
         title: const Text(
-          "Edit Profile",
+          "UniFit",
           style: TextStyle(
             color: Colors.white,
             fontSize: 30.0,
@@ -66,3 +66,51 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 }
+
+
+        // SizedBox(height: 30), // Empty space before the Stack
+          // Stack(
+          //   children: [
+          //     Container(
+          //       width: double.infinity,
+          //       height: 100,
+          //       decoration: BoxDecoration(
+          //         color: Color.fromRGBO(70, 245, 202, 1),
+          //         borderRadius: BorderRadius.only(
+          //           topLeft: Radius.circular(25),
+          //           topRight: Radius.circular(25),
+          //           bottomLeft: Radius.circular(25),
+          //           bottomRight: Radius.circular(25),
+          //         ),
+          //       ),
+          //     ),
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         IconButton(
+          //           icon: Icon(Icons.arrow_back),
+          //           onPressed: () {
+          //             // Implement the leading button action here
+          //           },
+          //         ),
+          //         Row(
+          //           children: [
+          //             IconButton(
+          //               icon: Icon(Icons.settings),
+          //               onPressed: () {
+          //                 // Implement the first action button action here
+          //               },
+          //             ),
+          //             IconButton(
+          //               icon: Icon(Icons.person),
+          //               onPressed: () {
+          //                 // Implement the second action button action here
+          //               },
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
+          // Add other content of the page below the Container
