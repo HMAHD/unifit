@@ -21,12 +21,16 @@ void main() => runApp(
     );
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key, Key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: IntroPage(),
+      home: introPage(),
     );
   }
+<<<<<<< HEAD
+>>>>>>> main
+=======
+}
 >>>>>>> main
