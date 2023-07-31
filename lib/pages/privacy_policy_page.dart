@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
-  const PrivacyPolicyPage({super.key});
+  const PrivacyPolicyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,23 +12,45 @@ class PrivacyPolicyPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Add navigation logic here to go back when the arrow button is pressed
-            Navigator.pop(context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
-        child: Center(
-          child: Text(
-            "This is the Privacy Policy text.",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "For the purposes of this Privacy Policy",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
+            SizedBox(height: 10),
+            Text(
+              "* Account means a unique account created for You to access our Service or parts of our Service.",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "* Affiliate means an entity that controls, is controlled by or is under"
+    "common control with a party, where ""control"" means ownership of 50% or"
+    "more of the shares, equity interest or other securities entitled to vote"
+    "for election of directors or other managing authority.",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
