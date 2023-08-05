@@ -8,28 +8,39 @@ class introPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 236, 234, 239),
+          
+        ),
         body: Column(children: [
-      Expanded(
-        flex: 2,
-        child: SizedBox(
-          width: double.infinity,
-          child: Center(
-            child: Image.asset(
-              "assets/unifit_logo.png",
-              width: size.width / 1,
+          Expanded(
+            flex: 2,
+            child: SizedBox(
+              child: Center(
+                child: Image.asset(
+                  "assets/unifit_logo.png",
+                  width: size.width / 1,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          width: double.infinity,
-          color: Colors.white,
-          alignment: Alignment.bottomCenter,
-        ),
-      ),
-    ]));
+          const SizedBox(
+            height: 10,
+          ),
+
+          ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(120),
+            topRight: Radius.circular(120),
+          ),
+          child: Container(
+              height: 100, color: const Color.fromRGBO(221, 244, 238, 5)),
+              
+          )
+
+          
+        ]));
   }
 }
 
