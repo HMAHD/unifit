@@ -1,68 +1,93 @@
 import 'package:flutter/material.dart';
+import 'package:nowa_runtime/nowa_runtime.dart';
 
+@NowaClass()
 // ignore: camel_case_types
 class introPage extends StatelessWidget {
   const introPage({super.key});
 
+  @NowaFunc()
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 236, 234, 239),
-          
+      body: Stack(
+        fit: StackFit.expand,
+        alignment: const Alignment(
+          0,
+          0,
         ),
-        body: Column(children: [
-          Expanded(
-            flex: 2,
-            child: SizedBox(
-              child: Center(
-                child: Image.asset(
-                  "assets/unifit_logo.png",
-                  width: size.width / 1,
+        children: [
+          Positioned(
+            width: 500,
+            height: 250,
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(
+                  4292736238,
                 ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(
+                    250,
+                  ),
+                  topRight: Radius.circular(
+                    250,
+                  ),
+                  bottomLeft: Radius.circular(
+                    0,
+                  ),
+                  bottomRight: Radius.circular(
+                    0,
+                  ),
+                ),
+                boxShadow: [],
+              ),
+            ),
+            top: 639,
+            left: -53.5,
+          ),
+          Positioned(
+            top: -69,
+            left: -53.5,
+            width: 500,
+            height: 250,
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(
+                  1084531924,
+                ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(
+                    0,
+                  ),
+                  topRight: Radius.circular(
+                    0,
+                  ),
+                  bottomLeft: Radius.circular(
+                    250,
+                  ),
+                  bottomRight: Radius.circular(
+                    250,
+                  ),
+                ),
+                boxShadow: [],
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-
-          ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(120),
-            topRight: Radius.circular(120),
-          ),
-          child: Container(
-              height: 100, color: const Color.fromRGBO(221, 244, 238, 5)),
-              
+          Positioned(
+            top: 194.5,
+            left: -94.5,
+            width: 582,
+            height: 419,
+            child: Image(
+              image: const AssetImage(
+                "assets/unifit_logo.png",
+              ),
+              fit: BoxFit.fitWidth,
+              colorBlendMode: BlendMode.saturation,
+            ),
           )
-
-          
-        ]));
-  }
-}
-
-class Square extends StatelessWidget {
-  final Color color;
-
-  const Square(
-    this.color, {
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Container(
-          color: color,
-        ),
+        ],
       ),
-    ));
+    );
   }
 }
