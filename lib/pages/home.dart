@@ -27,51 +27,54 @@ class _HomeState extends State<Home> {
     return PreferredSize(
       preferredSize: const Size.fromHeight(
           140.0), // Set the preferred height for the AppBar
-      child: AppBar(
-        leading: IconButton(
-          padding: const EdgeInsets.only(left: 10.0),
-          icon: const Icon(
-            Icons.menu,
-            color: Color.fromRGBO(48, 69, 91, 1.000),
-            size: 50,
-          ),
-          tooltip: 'menu Icon',
-          onPressed: () {},
-        ),
-        title: const Text(
-          "Profile",
-          style: TextStyle(
-            color: Color.fromRGBO(48, 69, 91, 1.000),
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            padding: const EdgeInsets.only(right: 40.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: AppBar(
+          leading: IconButton(
+            padding: const EdgeInsets.only(left: 10.0),
             icon: const Icon(
-              Icons.account_box,
+              Icons.menu,
               color: Color.fromRGBO(48, 69, 91, 1.000),
-              size: 60,
+              size: 30,
             ),
-            tooltip: 'Account Icon',
+            tooltip: 'menu Icon',
             onPressed: () {},
           ),
-        ],
-        titleSpacing: 00.0,
-        centerTitle: true,
-        toolbarHeight: 100.2,
-        toolbarOpacity: 0.8,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-            bottomLeft: Radius.circular(25),
+          title: const Text(
+            "Profile",
+            style: TextStyle(
+              color: Color.fromRGBO(48, 69, 91, 1.000),
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          actions: <Widget>[
+            IconButton(
+              padding: const EdgeInsets.only(right: 40.0),
+              icon: const Icon(
+                Icons.account_box,
+                color: Color.fromRGBO(48, 69, 91, 1.000),
+                size: 40,
+              ),
+              tooltip: 'Account Icon',
+              onPressed: () {},
+            ),
+          ],
+          titleSpacing: 00.0,
+          centerTitle: true,
+          toolbarHeight: 100.2,
+          toolbarOpacity: 0.8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+              bottomLeft: Radius.circular(25),
+            ),
+          ),
+          elevation: 0.00,
+          backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
         ),
-        elevation: 0.00,
-        backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
       ),
     );
   }
