@@ -20,6 +20,8 @@ class introPage extends StatelessWidget {
           Positioned(
             width: 500,
             height: 250,
+            top: 639,
+            left: -53.5,
             child: Container(
               decoration: BoxDecoration(
                 color: const Color(
@@ -42,8 +44,6 @@ class introPage extends StatelessWidget {
                 boxShadow: [],
               ),
             ),
-            top: 639,
-            left: -53.5,
           ),
           Positioned(
             top: -69,
@@ -51,11 +51,11 @@ class introPage extends StatelessWidget {
             width: 500,
             height: 250,
             child: Container(
-              decoration: BoxDecoration(
-                color: const Color(
-                  1084531924,
+              decoration: const BoxDecoration(
+                color: Color(
+                  0x40a4a4d4,
                 ),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                     0,
                   ),
@@ -73,13 +73,13 @@ class introPage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 194.5,
             left: -94.5,
             width: 582,
             height: 419,
             child: Image(
-              image: const AssetImage(
+              image: AssetImage(
                 "assets/unifit_logo.png",
               ),
               fit: BoxFit.fitWidth,
