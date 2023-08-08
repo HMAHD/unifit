@@ -6,6 +6,7 @@ void main() => runApp(
     );
 
 class MyApp extends StatelessWidget {
+  // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
   const MyApp({super.key, Key});
 
   @override
