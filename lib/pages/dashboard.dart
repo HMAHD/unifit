@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -10,69 +12,78 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    double devHeight = MediaQuery.of(context).size.height;
-    double devWidth = MediaQuery.of(context).size.width;
+    //double devHeight = MediaQuery.of(context).size.height;
+    //double devWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 35), // Empty space before the AppBar
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Container(
-              width: double.infinity,
-              height: 120,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: const Color.fromRGBO(70, 245, 202, 1),
-              ),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            color: Color.fromRGBO(48, 69, 91, 1.000),
-                            size: 30,
-                          )),
-                    ),
-                    const Text(
-                      "Dashboard",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(48, 69, 91, 1.000),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.account_box,
-                            color: Color.fromRGBO(48, 69, 91, 1.000),
-                            size: 40,
-                          )),
-                    ),
-                  ],
-                ),
-              ),
+    return SafeArea(
+      child: Scaffold(
+          drawer: const Drawer(),
+          appBar: AppBar(
+            backgroundColor: Colors.pink.shade400,
+            toolbarHeight: 100,
+            elevation: 14,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(70),
+                    bottomLeft: Radius.circular(70))),
+            title: Text(
+              'Dashboard',
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 100,
-            width: double.infinity,
-            color: Colors.blueGrey,
-          )
-        ],
-      ),
+            actions: [
+              Row(
+                children: [
+                  Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          blurRadius: 7, spreadRadius: 3, color: Colors.pink)
+                    ], shape: BoxShape.circle, color: Colors.pink.shade400),
+                    child: Icon(
+                      Icons.search,
+                      size: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          blurRadius: 7, spreadRadius: 3, color: Colors.pink)
+                    ], shape: BoxShape.circle, color: Colors.pink.shade400),
+                    child: Icon(
+                      Icons.notifications,
+                      size: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          blurRadius: 7, spreadRadius: 3, color: Colors.pink)
+                    ], shape: BoxShape.circle, color: Colors.pink.shade400),
+                    child: Icon(
+                      Icons.logout,
+                      size: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 26,
+                  )
+                ],
+              )
+            ],
+          )),
     );
   }
 }

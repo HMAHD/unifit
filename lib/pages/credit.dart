@@ -10,6 +10,6 @@ class Credit extends StatefulWidget {
 class _CreditState extends State<Credit> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

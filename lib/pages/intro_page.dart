@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
 
@@ -25,7 +27,7 @@ class introPage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: const Color(
-                  4292736238,
+                  0xffddf4ee,
                 ),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(

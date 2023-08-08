@@ -12,7 +12,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     double devHeight = MediaQuery.of(context).size.height;
-    double devWidth = MediaQuery.of(context).size.width;
+    // double devWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
