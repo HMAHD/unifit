@@ -1,111 +1,79 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:unifit/widgets/custom_text_field.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({Key? key}) : super(key: key);
-
-  @override
-  State<Settings> createState() => _SettingsState();
-}
-
-class _SettingsState extends State<Settings> {
-  @override
-  Widget build(BuildContext context) {
-    double devHeight = MediaQuery.of(context).size.height;
-    // double devWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              SizedBox(
-                height: devHeight * 0.05,
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromRGBO(70, 245, 202, 1),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.menu)),
-                      const Text(
-                        "Edit Profile",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.account_box)),
-                    ],
-                  ),
-                ),
-              ),
-              // const SizedBox(
-              //   width: 250,
-              // ),
-              SizedBox(
-                height: devHeight * 0.05,
-              ),
-              const CustomTextField(
-                icon: Icon(Icons.person),
-                title: 'Full Name',
-                isObscure: false,
-                hint: "Enter Your Full Name",
-              ),
-              SizedBox(
-                height: devHeight * 0.005,
-              ),
-              const CustomTextField(
-                icon: Icon(Icons.email_outlined),
-                title: 'E-mail',
-                isObscure: false,
-                hint: "Enter Your Email",
-              ),
-              SizedBox(
-                height: devHeight * 0.005,
-              ),
-              const CustomTextField(
-                icon: Icon(Icons.phone),
-                title: 'Email',
-                isObscure: false,
-                hint: "Enter Your Number",
-              ),
-
-              SizedBox(
-                height: devHeight * 0.05,
-              ),
-
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 3.5,
-                  minimumSize: const Size(330, 60),
-                  backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
+AppBar buildAppBar(BuildContext context, String title) {
+  return AppBar(
+    backgroundColor: const Color.fromARGB(220, 28, 232, 164),
+    toolbarHeight: 100,
+    elevation: 10,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(70),
+        topRight: Radius.circular(70),
+        bottomRight: Radius.circular(70),
+        bottomLeft: Radius.circular(70),
+      ),
+    ),
+    leading: InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Settings()),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Icon(
+          Icons.menu,
+          size: 40,
+          color: Colors.black,
+        ),
+      ),
+    ),
+    title: Center(
+      child: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 32,
+          fontFamily: 'Poppins',
+        ),
+      ),
+    ),
+    actions: [
+      InkWell(
+        onTap: () {
+          // Handle person icon click
+          // You can navigate to another page or perform other actions
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 40,
+            width: 40,
+            alignment: Alignment.center,
+            child: Icon(
+              Icons.person,
+              size: 40,
+              color: Colors.black,
+            ),
           ),
         ),
+      ),
+      SizedBox(width: 26),
+    ],
+  );
+}
+
+class Settings extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: buildAppBar(context, 'Settings'), // Pass the title here
+      body: Center(
+        child: Text('Settings Page Content'),
       ),
     );
   }
