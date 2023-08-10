@@ -11,7 +11,6 @@ class introPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 236, 234, 239),
-          
         ),
         body: Column(children: [
           Expanded(
@@ -21,6 +20,7 @@ class introPage extends StatelessWidget {
                 child: Image.asset(
                   "assets/unifit_logo.png",
                   width: size.width / 1,
+                  
                 ),
               ),
             ),
@@ -28,18 +28,14 @@ class introPage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-
           ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(120),
-            topRight: Radius.circular(120),
-          ),
-          child: Container(
-              height: 100, color: const Color.fromRGBO(221, 244, 238, 5)),
-              
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(120),
+              topRight: Radius.circular(120),
+            ),
+            child: Container(
+                height: 100, color: const Color.fromRGBO(221, 244, 238, 5)),
           )
-
-          
         ]));
   }
 }
