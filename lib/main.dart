@@ -8,14 +8,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {}
-}
-
-class MyApp extends StatelessWidget {
-  // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
-  const MyApp({super.key, Key});
-
-  @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
