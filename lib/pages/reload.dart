@@ -10,6 +10,6 @@ class Reload extends StatefulWidget {
 class _ReloadState extends State<Reload> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
