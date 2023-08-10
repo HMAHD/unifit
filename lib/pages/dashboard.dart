@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/settings.dart';
 
@@ -11,12 +13,12 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool _amountVisible = true; // Used to toggle amount visibility
 
-  int _creditAmount = 5000; // Example credit amount in Rs
+  final int _creditAmount = 5000; // Example credit amount in Rs
   int _calculatedGymTime = 0; // Calculated gym time in minutes
   int _calculatedPoolTime = 0; // Calculated pool time in minutes
 
   final int gymCostPerHour = 100;
-  final int poolCostPerHour = 50;
+  final int poolCostPerHour = 100;
 
   @override
   void initState() {
@@ -48,18 +50,21 @@ class _DashboardState extends State<Dashboard> {
               bottomLeft: Radius.circular(70),
             ),
           ),
-          leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              size: 40,
-              color: Colors.black,
+          leading: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+                );
+              },
+              child: Icon(
+                Icons.menu,
+                size: 40,
+                color: Colors.black,
+              ),
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Settings()),
-              );
-            },
           ),
           title: Center(
             child: Text(
@@ -345,7 +350,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 26),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               padding: EdgeInsets.all(16),
@@ -471,6 +476,8 @@ class _DashboardState extends State<Dashboard> {
 }
 
 class GymPage extends StatelessWidget {
+  const GymPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -483,6 +490,8 @@ class GymPage extends StatelessWidget {
 }
 
 class PoolPage extends StatelessWidget {
+  const PoolPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
