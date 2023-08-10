@@ -50,18 +50,21 @@ class _DashboardState extends State<Dashboard> {
               bottomLeft: Radius.circular(70),
             ),
           ),
-          leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              size: 40,
-              color: Colors.black,
+          leading: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+                );
+              },
+              child: Icon(
+                Icons.menu,
+                size: 40,
+                color: Colors.black,
+              ),
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Settings()),
-              );
-            },
           ),
           title: Center(
             child: Text(
