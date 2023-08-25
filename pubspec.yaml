@@ -18,7 +18,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  qr_code_scanner: ^1.0.1  
+  mobile_scanner: ^3.4.1
 
   hexcolor: ^3.0.1
 
