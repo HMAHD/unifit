@@ -3,6 +3,7 @@ import 'package:logger/logger.dart';
 import 'package:unifit/pages/settings.dart';
 import 'package:unifit/pages/scanner.dart'; // Adjust the import path based on your project structure
 
+
 /// Represents the UI of a dashboard screen in a Flutter application.
 ///
 /// The dashboard screen displays the user's credit balance and calculated time for gym and pool activities.
@@ -325,6 +326,7 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
+
                           // Create a logger instance
                           var logger = Logger();
 
@@ -343,6 +345,10 @@ class _DashboardState extends State<Dashboard> {
                           } else {
                             // Handle other cases
                           }
+                          // Print the scanned QR code result.
+                          logger.i('Scanned QR code result: $result');
+                          // You can now decide what to do with the scanned QR code result.
+
                         }
                       },
 
@@ -384,6 +390,7 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
+
                           // Create a logger instance
                           var logger = Logger();
 
@@ -402,6 +409,11 @@ class _DashboardState extends State<Dashboard> {
                           } else {
                             // Handle other cases
                           }
+
+                          // Print the scanned QR code result.
+                          logger.i('Scanned QR code result: $result');
+                          // You can now decide what to do with the scanned QR code result.
+
                         }
                       },
 

@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:provider/provider.dart';
-import 'package:unifit/pages/timer_state.dart';
-
 /// The `QRScannerScreen` class is a StatefulWidget that displays a QR scanner screen. It initializes the QR scanner, handles the scanned QR code, and updates the UI based on the session type and timer state.
 ///
 /// Example Usage:
@@ -34,6 +29,15 @@ import 'package:unifit/pages/timer_state.dart';
 /// - The UI of the QR scanner screen is displayed, including the QR view, a message to scan the specific QR code, the timer value from the `TimerState` provider, and the session status or total time spent.
 
 // ignore_for_file: library_private_types_in_public_api
+=======
+// ignore_for_file: library_private_types_in_public_api
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:provider/provider.dart'; // Import the provider package
+import 'package:unifit/pages/timer_state.dart'; // Import your TimerState class
+
 
 class QRScannerScreen extends StatefulWidget {
   const QRScannerScreen({super.key});
@@ -46,7 +50,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   late QRViewController controller;
   bool isScanned = false;
+
   String sessionType = ''; // Variable to store the session type (gym or pool)
+
 
   @override
   void initState() {
@@ -58,6 +64,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   void onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
+
       if (!isScanned && scanData != null) {
         // Check if the scanned QR code is for gym or pool
         if (scanData.code == 'GYM-START' || scanData.code == 'GYM-END') {
@@ -80,6 +87,14 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
             // Update UI to display session status or total time spent
           });
         }
+
+      if (!isScanned && scanData != null && scanData.code == '12345') {
+        isScanned = true;
+        // Stop the timer when the specific QR code is scanned
+        Provider.of<TimerState>(context, listen: false).stopTimer();
+        // Return the scanned QR code result
+        Navigator.pop(context, scanData.code);
+
       }
     });
   }
@@ -102,7 +117,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           const Expanded(
             flex: 1,
             child: Center(
+
               child: Text('Scan the specific QR code for Gym or Pool'),
+
             ),
           ),
           // Display the timer using the values from TimerState
@@ -115,6 +132,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
             isScanned ? '$sessionType Session Ended' : 'Session Not Started',
             style: TextStyle(fontSize: 18),
           ),
+
         ],
       ),
     );
