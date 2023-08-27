@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _EditProfileState extends State<HomePage> {
+  final logger = Logger();
+
   PreferredSizeWidget getCustomAppBar(BuildContext context) {
     return PreferredSize(
       preferredSize: const Size.fromHeight(
@@ -127,14 +130,14 @@ class _EditProfileState extends State<HomePage> {
                 // Add your sign-in logic here
                 // For example, you can call a sign-in function or navigate to another screen upon successful sign-in.
                 // Replace the below line with your actual sign-in implementation.
-                print('Sign-in button pressed');
+                logger.i('Sign-in button pressed');
               },
-              child: const Text('Sign In'),
               style: ElevatedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
                 // Customize other button styles here, if needed.
               ),
+              child: const Text('Sign In'),
             ),
           ),
 
