@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unifit/pages/user_profile.dart';
+import 'package:unifit/pages/intro_page.dart';
 //import 'package:unifit/pages/dashboard.dart';
 
 void main() => runApp(
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserProfile(),
+      home: introPage(),
     );
   }
 }
