@@ -1,7 +1,29 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/settings.dart';
+
+/// Represents the UI of a dashboard screen in a Flutter application.
+///
+/// The dashboard screen displays the user's credit balance and calculated time for gym and pool activities.
+/// It also includes buttons for navigating to the gym and pool pages, as well as displaying updates for gym and pool activities.
+///
+/// Example Usage:
+///
+/// ```dart
+/// Dashboard()
+/// ```
+///
+/// The screen is divided into sections:
+///
+/// 1. App Bar: Displays the title of the dashboard and a menu icon for accessing settings.
+///
+/// 2. Credit Balance: Displays the user's credit balance. The actual amount can be toggled to be visible or hidden.
+///
+/// 3. Gym and Pool Buttons: Allows the user to navigate to the gym and pool pages. Displays the calculated time for each activity.
+///
+/// 4. Gym and Pool Updates: Displays updates for gym and pool activities. The content can be replaced with actual news text from a database.
+///
+/// Note: This code snippet is a part of the `Dashboard` class.//
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
