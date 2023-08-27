@@ -1,18 +1,49 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
+/// A Flutter widget representing a settings screen.
+///
+/// The `Settings` widget builds a `Scaffold` widget that provides a basic structure for the screen.
+/// It includes an `AppBar` at the top with a custom background color, a fixed height, and rounded borders.
+/// The `AppBar` contains a leading icon button that opens a menu, a centered title with a custom font and style,
+/// and a row of action icons on the right side.
+///
+/// The body of the screen is a `Column` widget that contains a container with a light green background color and padding.
+/// Inside the container, there are two sections: "Options" and "Actions".
+/// Each section is represented by a `Text` widget with a bold font and a list of `SettingsItem` widgets.
+///
+/// The `SettingsItem` widget represents a single item in the settings list.
+/// It includes an icon, a title, and an `onTap` callback function.
+/// The icon and title are displayed in a row inside a container with a white background color and rounded borders.
+/// When the user taps on the item, the `onTap` callback function is called.
+///
+/// At the bottom of the screen, there is a custom back button widget called `CustomBackButton`.
+/// It displays an arrow back icon and a text label.
+/// When the user taps on the button, the `onPressed` callback function is called.
+/// In this case, it uses the `Navigator.pop` function to go back to the previous screen.
+///
+/// The `Settings` widget can be used as a standalone screen or integrated into a larger application.
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+/// A custom back button widget that can be used in Flutter applications.
+///
+/// The [CustomBackButton] widget displays a container with a rounded border and a background color.
+/// Inside the container, there is an arrow back icon and a text label.
+/// When the button is pressed, the [onPressed] callback function is called.
 class CustomBackButton extends StatelessWidget {
   final VoidCallback onPressed;
 
+  /// Creates a [CustomBackButton] widget.
+  ///
+  /// The [onPressed] parameter is a required callback function that is called when the button is pressed.
   const CustomBackButton({
-    super.key,
+    Key? key,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: 50),
       decoration: BoxDecoration(
         color: Color(0xFF19A49C),
         borderRadius: BorderRadius.only(
@@ -131,6 +162,7 @@ class Settings extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SizedBox(height: 30),
           Container(
             color: Color(0xFFE4F7F2),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -255,7 +287,7 @@ class SettingsItem extends StatelessWidget {
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 2,
-              blurRadius: 5,
+              blurRadius: 2,
               offset: Offset(0, 3),
             ),
           ],

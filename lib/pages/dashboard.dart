@@ -1,7 +1,31 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:unifit/pages/settings.dart';
+import 'package:unifit/pages/scanner.dart';
+
+/// Represents the UI of a dashboard screen in a Flutter application.
+///
+/// The dashboard screen displays the user's credit balance and calculated time for gym and pool activities.
+/// It also includes buttons for navigating to the gym and pool pages, as well as displaying updates for gym and pool activities.
+///
+/// Example Usage:
+///
+/// ```dart
+/// Dashboard()
+/// ```
+///
+/// The screen is divided into sections:
+///
+/// 1. App Bar: Displays the title of the dashboard and a menu icon for accessing settings.
+///
+/// 2. Credit Balance: Displays the user's credit balance. The actual amount can be toggled to be visible or hidden.
+///
+/// 3. Gym and Pool Buttons: Allows the user to navigate to the gym and pool pages. Displays the calculated time for each activity.
+///
+/// 4. Gym and Pool Updates: Displays updates for gym and pool activities. The content can be replaced with actual news text from a database.
+///
+/// Note: This code snippet is a part of the `Dashboard` class.//
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -19,6 +43,8 @@ class _DashboardState extends State<Dashboard> {
 
   final int gymCostPerHour = 100;
   final int poolCostPerHour = 100;
+
+  final logger = Logger();
 
   @override
   void initState() {
@@ -287,12 +313,22 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
-                      onTap: () {
-                        // Handle Clean button tap
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => CleanPage()),
-                        // );
+                      // Define an `onTap` callback function that returns a Future.
+                      onTap: () async {
+                        // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
+                        final result = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QRScannerScreen(),
+                          ),
+                        );
+
+                        // Check if the `result` is not null and is of type String.
+                        if (result != null && result is String) {
+                          // Print the scanned QR code result.
+                          logger.i('Scanned QR code result: $result');
+                          // You can now decide what to do with the scanned QR code result.
+                        }
                       },
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
@@ -320,13 +356,24 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        // Handle Wash button tap
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => WashPage()),
-                        // );
+                      // Define an `onTap` callback function that returns a Future.
+                      onTap: () async {
+                        // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
+                        final result = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QRScannerScreen(),
+                          ),
+                        );
+
+                        // Check if the `result` is not null and is of type String.
+                        if (result != null && result is String) {
+                          // Print the scanned QR code result.
+                          logger.i('Scanned QR code result: $result');
+                          // You can now decide what to do with the scanned QR code result.
+                        }
                       },
+
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
                         padding: EdgeInsets.all(15),

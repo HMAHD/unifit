@@ -28,6 +28,9 @@ dependencies:
   device_preview: ^1.1.0
   nowa_runtime: ^0.0.15
   get: ^4.6.5
+  qr_code_scanner: ^1.0.1
+  logger: ^2.0.1
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
