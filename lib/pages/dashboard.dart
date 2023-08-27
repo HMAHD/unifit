@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:unifit/pages/settings.dart';
-import 'package:unifit/pages/scanner.dart';
+import 'package:unifit/pages/scanner.dart'; // Adjust the import path based on your project structure
 
 /// Represents the UI of a dashboard screen in a Flutter application.
 ///
@@ -325,11 +325,27 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
+                          // Create a logger instance
+                          var logger = Logger();
+
                           // Print the scanned QR code result.
                           logger.i('Scanned QR code result: $result');
-                          // You can now decide what to do with the scanned QR code result.
+
+                          // Now you can decide what to do with the scanned QR code result.
+                          if (result == 'GYM-START') {
+                            // Handle gym start action
+                          } else if (result == 'GYM-END') {
+                            // Handle gym end action
+                          } else if (result == 'POOL-START') {
+                            // Handle pool start action
+                          } else if (result == 'POOL-END') {
+                            // Handle pool end action
+                          } else {
+                            // Handle other cases
+                          }
                         }
                       },
+
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
                         padding: EdgeInsets.all(15),
@@ -368,9 +384,24 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
+                          // Create a logger instance
+                          var logger = Logger();
+
                           // Print the scanned QR code result.
                           logger.i('Scanned QR code result: $result');
-                          // You can now decide what to do with the scanned QR code result.
+
+                          // Now you can decide what to do with the scanned QR code result.
+                          if (result == 'GYM-START') {
+                            // Handle gym start action
+                          } else if (result == 'GYM-END') {
+                            // Handle gym end action
+                          } else if (result == 'POOL-START') {
+                            // Handle pool start action
+                          } else if (result == 'POOL-END') {
+                            // Handle pool end action
+                          } else {
+                            // Handle other cases
+                          }
                         }
                       },
 
