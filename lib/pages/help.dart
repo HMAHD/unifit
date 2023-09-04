@@ -78,7 +78,7 @@ class _HelpState extends State<Help> {
               'You have any question?',
               style: TextStyle(
                 fontSize: 24,
-                color: Colors.black,
+                color: Color.fromARGB(255, 55, 55, 55),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -95,6 +95,37 @@ class _HelpState extends State<Help> {
                   borderRadius: BorderRadius.circular(18),
                 ),
               ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 12, top: 20, right: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Frequently Asked',
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    // Handle the "View All" action here
+                  },
+                  child: const Text(
+                    'View All',
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors
+                          .black, // You can change the color to your preference
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
 
