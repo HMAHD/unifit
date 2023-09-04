@@ -74,7 +74,7 @@ class _HelpState extends State<Help> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.only(left: 12, top: 10),
+            padding: EdgeInsets.only(left: 12, top: 20),
             child: Text(
               'You have any question?',
               style: TextStyle(
