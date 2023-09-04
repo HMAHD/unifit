@@ -1,3 +1,4 @@
+// Import required packages
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -73,7 +74,7 @@ class _HelpState extends State<Help> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.only(left: 12, top: 20),
+            padding: EdgeInsets.only(left: 12, top: 10),
             child: Text(
               'You have any question?',
               style: TextStyle(
@@ -84,22 +85,20 @@ class _HelpState extends State<Help> {
             ),
           ),
 
-          // Add a search bar
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+          // Add a search bar without outline
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 14),
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                ),
+                prefixIcon: Icon(Icons.search),
+                border: InputBorder.none, // Remove the outline
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 12, top: 20, right: 12),
+            padding: const EdgeInsets.only(left: 12, top: 06, right: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -126,6 +125,106 @@ class _HelpState extends State<Help> {
                   ),
                 ),
               ],
+            ),
+          ),
+
+          // Add a Card 1
+          Padding(
+            padding: const EdgeInsets.all(08.0),
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'How do I create a Smartpay account?',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 40, 51, 85),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'You can create a Smartpay account by:downlord and open the Sartpay application first then select...',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          //card 2
+          Padding(
+            padding: const EdgeInsets.all(08.0),
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'How to create card for Smartpay?',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 40, 51, 85),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'You can select the craete card menu then select "Add New Card" select the continue button then you...',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          //card 3
+          Padding(
+            padding: const EdgeInsets.all(08.0),
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'How to Top Up on Smartpay?',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 40, 51, 85),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Click the Top Up menu then select the amount of money and then click the  "top up now"button...',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
 
