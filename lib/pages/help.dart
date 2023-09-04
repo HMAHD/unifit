@@ -84,6 +84,20 @@ class _HelpState extends State<Help> {
             ),
           ),
 
+          // Add a search bar
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+              ),
+            ),
+          ),
+
           // Add elevator button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
