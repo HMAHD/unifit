@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:unifit/pages/intro_page.dart';
+
+//import 'package:unifit/pages/dashboard.dart';
+//import 'package:unifit/pages/intro_page.dart';
+import 'package:unifit/pages/scanner.dart'; 
+
+
 
 import 'package:flutter/foundation.dart'; // Import for kReleaseMode
 import 'package:logger/logger.dart'; // Import the logger package
@@ -36,8 +41,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     logger.i('Building MyApp');
     return const MaterialApp(
+      
       debugShowCheckedModeBanner: false,
-      home: introPage(),
+      title: "QR Scanner",
+      home: QRScanner() 
+    
+
     );
   }
 }
