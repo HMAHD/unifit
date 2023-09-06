@@ -20,7 +20,9 @@ class _UserProfileState extends State<UserProfile> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(220, 28, 232, 164),
           toolbarHeight: 100,
+
           elevation: 5,
+
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
@@ -76,10 +78,12 @@ class _UserProfileState extends State<UserProfile> {
             const Padding(
               padding: EdgeInsets.only(top: 20),
               child: Center(
+
                 //add image
                 child: CircleAvatar(
                   radius: 100,
                   backgroundImage: AssetImage('assets/Avatar.png'),
+
                 ),
               ),
             ),
@@ -87,7 +91,9 @@ class _UserProfileState extends State<UserProfile> {
               height: 20,
             ),
             const Text(
+
               'John Doe',
+
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
