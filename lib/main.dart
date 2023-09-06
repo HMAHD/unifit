@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unifit/pages/countdown_gym_payment.dart';
+import 'package:unifit/pages/countdown_pool_payment.dart';
 //import 'package:unifit/pages/dashboard.dart';
 
 void main() => runApp(
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CountGym(),
+      home: CountPool(),
     );
   }
 }
