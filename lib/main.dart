@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:unifit/pages/countdoun_gym_time.dart';
+//import 'package:unifit/pages/countdoun_gym_time.dart';
 import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/dashboard.dart';
 //import 'package:unifit/pages/diposit.dart';
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
     logger.i('Building MyApp');
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Credit(),
+      home: MyHomePage(),
     );
   }
 }
