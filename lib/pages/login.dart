@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                       final password =
                           getPasswordFromTextField(); // Replace with your implementation
 
-                      final response = await supabase.auth.signIn(
+                      final response = await supabase.auth.user.signIn(
                         email: email,
                         password: password,
                       );
