@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-// Import the PrivacyPage
+import 'package:hexcolor/hexcolor.dart';
 
-class PrivacyPolicyPage extends StatelessWidget {
-  const PrivacyPolicyPage({Key? key}) : super(key: key);
+class Privacy extends StatefulWidget {
+  const Privacy({Key? key}) : super(key: key);
 
   @override
+  State<Privacy> createState() => _PrivacyState();
+}
+
+class _PrivacyState extends State<Privacy> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    var size = MediaQuery.of(context).size;
+    var width = size.width;
+    var height = size.height;
+    
+    return Scaffold(appBar: AppBar(
         centerTitle: true,
         title: const Text("Privacy Policy"),
         leading: IconButton(
@@ -17,6 +25,7 @@ class PrivacyPolicyPage extends StatelessWidget {
           },
         ),
       ),
+      
       body: SingleChildScrollView( // Wrap the Column with SingleChildScrollView
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -340,20 +349,31 @@ class PrivacyPolicyPage extends StatelessWidget {
                 //fontWeight: FontWeight.bold,
               ),
             ),
-          const SizedBox(height: 20), // Add some space before the button
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const PrivacyPolicyPage()),
-                );
-              },
-              child: const Text("Go to Privacy Page"),
+      // Add elevator button
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(width, height / 13),
+            foregroundColor: Colors.white,
+            backgroundColor: HexColor('19a49c'),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
             ),
-            const SizedBox(height: 20), 
-            ],// Add some space after the button
+          ),
+          child: const Text(
+            'Back to Home',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
         ),
       ),
+          ],
+        ),
+    ),
     );
   }
 }
+
