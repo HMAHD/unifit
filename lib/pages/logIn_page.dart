@@ -188,32 +188,8 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
     preferredSize:
         const Size.fromHeight(140.0), // Set the preferred height for the AppBar
     child: AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        tooltip: 'menu Icon',
-        onPressed: () {},
-      ),
-      title: const Text(
-        "UniFit",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(
-            Icons.account_box,
-          ),
-          tooltip: 'Account Icon',
-          onPressed: () {},
-        ),
-      ],
-      titleSpacing: 00.0,
-      centerTitle: true,
-      toolbarHeight: 100.2,
-      toolbarOpacity: 0.8,
+      backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
+      elevation: 0.0, // Remove the shadow
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(25),
@@ -222,8 +198,38 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
           bottomLeft: Radius.circular(25),
         ),
       ),
-      elevation: 0.00,
-      backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
+      title: Row(
+        children: [
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: 16.0), // Adjust the left padding as needed
+              child: Text(
+                "UniFit",
+                style: TextStyle(
+                  color: Color(0xFF0C303D),
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const Spacer(), // Add a spacer to separate the text and image
+          Align(
+            alignment: Alignment.centerRight,
+            child: Image.asset(
+              "assets/logo.png", // Replace with your image asset
+              width: 150.0, // Set the width of the image as needed
+              height: 150.0, // Set the height of the image as needed
+            ),
+          ),
+        ],
+      ),
+
+      titleSpacing: 0.0, // Remove extra spacing around the title
+      centerTitle: true, // Center the title horizontally
+      toolbarHeight: 100.2, // Set the toolbar height
     ),
   );
 }
