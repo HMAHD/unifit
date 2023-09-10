@@ -1,6 +1,6 @@
-// Import required packages
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'dart:async'; // Import the dart:async package
 
 class Help extends StatefulWidget {
   const Help({Key? key}) : super(key: key);
@@ -10,6 +10,24 @@ class Help extends StatefulWidget {
 }
 
 class _HelpState extends State<Help> {
+  int _secondsRemaining = 60; // Initial countdown time in seconds
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Create a timer that runs a function every second to update the countdown
+    Timer.periodic(const Duration(seconds: 1), (timer) { // Use Timer.periodic
+      setState(() {
+        if (_secondsRemaining > 0) {
+          _secondsRemaining--;
+        } else {
+          timer.cancel(); // Cancel the timer when countdown reaches 0
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -17,216 +35,23 @@ class _HelpState extends State<Help> {
     var height = size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(220, 28, 232, 164),
-        toolbarHeight: 100,
-        elevation: 10,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
-          ),
-        ),
-        leading: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              Icons.menu,
-              size: 40,
-              color: Color.fromRGBO(48, 69, 91, 1.000),
-            ),
-          ),
-        ),
-        title: const Center(
-          child: Text(
-            'Help & Support',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(48, 69, 91, 1.000),
-              fontSize: 30,
-              fontFamily: 'Poppins',
-            ),
-          ),
-        ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                height: 40,
-                width: 40,
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.person,
-                  size: 40,
-                  color: Color.fromRGBO(48, 69, 91, 1.000),
-                ),
-              ),
-              const SizedBox(
-                width: 26,
-              ),
-            ],
-          )
-        ],
+        // ... your existing code for the app bar
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 12, top: 20),
+          // Add the countdown timer to the body
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
-              'You have any question?',
-              style: TextStyle(
-                fontSize: 24,
-                color: Color.fromARGB(255, 55, 55, 55),
+              'Countdown: $_secondsRemaining seconds',
+              style: const TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
 
-          // Add a search bar without outline
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 14),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: InputBorder.none, // Remove the outline
-              ),
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 12, top: 06, right: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Frequently Asked',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Handle the "View All" action here
-                  },
-                  child: const Text(
-                    'View All',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors
-                          .black, // You can change the color to your preference
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // Add a Card 1
-          Padding(
-            padding: const EdgeInsets.all(08.0),
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'How do I create a Smartpay account?',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 40, 51, 85),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'You can create a Smartpay account by:downlord and open the Sartpay application first then select...',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          //card 2
-          Padding(
-            padding: const EdgeInsets.all(08.0),
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'How to create card for Smartpay?',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 40, 51, 85),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'You can select the craete card menu then select "Add New Card" select the continue button then you...',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          //card 3
-          Padding(
-            padding: const EdgeInsets.all(08.0),
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'How to Top Up on Smartpay?',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 40, 51, 85),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Click the Top Up menu then select the amount of money and then click the  "top up now"button...',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          // ... your existing widgets
 
           // Add elevator button
           Padding(
@@ -249,7 +74,7 @@ class _HelpState extends State<Help> {
               ),
             ),
           ),
-        ], //children
+        ],
       ),
     );
   }
