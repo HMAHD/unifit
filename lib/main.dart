@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:unifit/pages/timer_state.dart';
 import 'package:unifit/pages/wrapper.dart'; // Import your TimerState class
 
+
 //import 'package:unifit/pages/dashboard.dart';
 
 final logger = Logger(
@@ -44,9 +45,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     logger.i('Building UniFit');
     return const MaterialApp(
+      
       debugShowCheckedModeBanner: false,
+
       //home: introPage(),
       home: Wrapper(),
+
     );
   }
 }

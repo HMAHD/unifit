@@ -1,3 +1,116 @@
+/*
+import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+
+const bgColor = Color(0xfffafafa);
+
+class QRScanner extends StatelessWidget {
+  const QRScanner({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "QR Scanner",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Place the QR code in the area",
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Scanning will be started automatically",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              ),
+            ),
+            Expanded(
+              flex: 4,
+              child: MobileScanner(
+                onDetect: (barcodes) {},
+              ),
+            ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                child: const Text(
+                  "Developed by Baaba devs",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 14,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+----Amasha PR Conflic end -----
+*/ 
+
+
+/// The `QRScannerScreen` class is a StatefulWidget that displays a QR scanner screen. It initializes the QR scanner, handles the scanned QR code, and updates the UI based on the session type and timer state.
+///
+/// Example Usage:
+/// ```dart
+/// QRScannerScreen qrScannerScreen = QRScannerScreen();
+/// qrScannerScreen.initState();
+/// qrScannerScreen.onQRViewCreated(controller);
+/// qrScannerScreen.build(context);
+/// qrScannerScreen.dispose();
+/// ```
+///
+/// Inputs:
+/// - `context`: The `BuildContext` object used to access the `TimerState` provider.
+/// - `scanData`: The scanned QR code data.
+///
+/// Flow:
+/// - The `initState` method is called when the screen is initialized. It starts the timer by calling the `startTimer` method of the `TimerState` provider.
+/// - The `onQRViewCreated` method is called when the QR view is created. It assigns the QR controller and listens to the scanned data stream.
+/// - When a QR code is scanned and `isScanned` is false, the code checks if the scanned code is for the gym or pool session.
+/// - If the code is for the gym session, the `sessionType` is set to 'Gym'. If it is for the pool session, the `sessionType` is set to 'Pool'.
+/// - If the `sessionType` is not empty, the code sets `isScanned` to true and gets the `TimerState` provider.
+/// - If the `sessionType` is 'Gym', the timer is stopped by calling the `stopTimer` method of the `TimerState` provider.
+/// - If the `sessionType` is 'Pool', the timer is started by calling the `startTimer` method of the `TimerState` provider.
+/// - The UI is updated by calling `setState` to display the session status or total time spent.
+/// - The `build` method is called to build the UI of the QR scanner screen.
+/// - The `dispose` method is called when the screen is disposed. It disposes the QR controller.
+///
+/// Outputs:
+/// - The UI of the QR scanner screen is displayed, including the QR view, a message to scan the specific QR code, the timer value from the `TimerState` provider, and the session status or total time spent.
+
+// ignore_for_file: library_private_types_in_public_api
+
+// ignore_for_file: library_private_types_in_public_api
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:provider/provider.dart'; // Import the provider package
@@ -102,4 +215,5 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     controller.dispose();
     super.dispose();
   }
+
 }
