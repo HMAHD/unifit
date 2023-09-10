@@ -43,7 +43,7 @@ class _EditProfileState extends State<EditProfile> {
                         color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.account_box)),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.person)),
                   ],
                 ),
               ),
