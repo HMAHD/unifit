@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:unifit/pages/credit.dart';
+import 'package:unifit/pages/dashboard.dart';
+//import 'package:unifit/pages/diposit.dart';
+import 'package:unifit/pages/edit_profile.dart';
 
 import 'package:unifit/pages/intro_page.dart';
 import 'package:flutter/foundation.dart'; // Import for kReleaseMode
 import 'package:logger/logger.dart'; // Import the logger package
 import 'package:provider/provider.dart';
+import 'package:unifit/pages/reload.dart';
+import 'package:unifit/pages/settings.dart';
 import 'package:unifit/pages/timer_state.dart'; // Import your TimerState class
 
 //import 'package:unifit/pages/dashboard.dart';
@@ -40,7 +45,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Credit(),
-      home: introPage(),
     );
   }
 }
