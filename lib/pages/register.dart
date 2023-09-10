@@ -10,6 +10,10 @@ class HomePage extends StatefulWidget {
 
 class _EditProfileState extends State<HomePage> {
   final logger = Logger();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
 
   PreferredSizeWidget getCustomAppBar(BuildContext context) {
     return PreferredSize(
@@ -69,7 +73,6 @@ class _EditProfileState extends State<HomePage> {
           getCustomAppBar(context), // Custom AppBar
           const SizedBox(height: 20), // Empty space after AppBar
 
-          // Add other content of the page below the AppBar
           const Text(
             'Create an account', // Replace this with the desired text
             style: TextStyle(
@@ -79,43 +82,48 @@ class _EditProfileState extends State<HomePage> {
             ),
           ),
           const Text(
-            'Unlock your fitness potential  on UNIFIT!', // Replace this with the desired text
+            'Unlock your fitness potential on UNIFIT!', // Replace this with the desired text
             style: TextStyle(
               fontSize: 15,
               color: Colors.black,
             ),
           ),
 
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
+              controller: usernameController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter Your Username',
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
+              controller: emailController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter Your Email',
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
+              controller: phoneNumberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter Your Phone Number',
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
+              controller: passwordController,
+              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter Your Password',
@@ -127,31 +135,44 @@ class _EditProfileState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () {
-                // Add your sign-in logic here
-                // For example, you can call a sign-in function or navigate to another screen upon successful sign-in.
-                // Replace the below line with your actual sign-in implementation.
-                logger.i('Sign-in button pressed');
+                // Gather user data for registration or login here
+                final username = usernameController.text.trim();
+                final email = emailController.text.trim();
+                final phoneNumber = phoneNumberController.text.trim();
+                final password = passwordController.text.trim();
+
+                // Implement your registration or login logic here
+                // For example, you can call a registration or login function with the gathered data.
+                // Replace the below line with your actual implementation.
+                logger.i('Registration/Login button pressed');
               },
               style: ElevatedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
                 // Customize other button styles here, if needed.
               ),
-              child: const Text('Sign In'),
+              child: const Text('Register/Login'),
             ),
           ),
 
           const Text(
-            'Unlock your fitness potential  on UNIFIT!', // Replace this with the desired text
+            'Unlock your fitness potential on UNIFIT!', // Replace this with the desired text
             style: TextStyle(
               fontSize: 15,
               color: Colors.black,
             ),
           ),
-
-          // Left-aligned text using Row widget
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    phoneNumberController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }
