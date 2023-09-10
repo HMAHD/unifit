@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:async'; // Import the dart:async package
 
-class Help extends StatefulWidget {
-  const Help({Key? key}) : super(key: key);
+class Countdown_Pool extends StatefulWidget {
+  const Countdown_Pool({Key? key}) : super(key: key);
 
   @override
-  State<Help> createState() => _HelpState();
+  State<Countdown_Pool> createState() => _Countdown_PoolState();
 }
 
-class _HelpState extends State<Help> {
-  int _secondsRemaining = 60; // Initial countdown time in seconds
+class _Countdown_PoolState extends State<Countdown_Pool> {
+   int _counter = 0;
+  late Timer _timer;
+ // Initial countdown time
 
-  @override
-  void initState() {
-    super.initState();
-
-    // Create a timer that runs a function every second to update the countdown
+  void _startTimer()
+   {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _counter++;
+      });
+    });
+  }
+/*
     Timer.periodic(const Duration(seconds: 1), (timer) { // Use Timer.periodic
       setState(() {
         if (_secondsRemaining > 0) {
@@ -138,4 +144,4 @@ class _HelpState extends State<Help> {
     )
     );
   }
-}
+}*/
