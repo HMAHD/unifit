@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'dart:async'; // Import the dart:async package
+import 'dart:async';
 
 class Countdown_Pool extends StatefulWidget {
   const Countdown_Pool({Key? key}) : super(key: key);
@@ -10,18 +9,65 @@ class Countdown_Pool extends StatefulWidget {
 }
 
 class _Countdown_PoolState extends State<Countdown_Pool> {
-   int _counter = 0;
+  int _counter = 0;
   late Timer _timer;
- // Initial countdown time
 
-  void _startTimer()
-   {
+  void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _counter++;
       });
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer(); // Start the timer automatically when the widget is initialized.
+  }
+
+  @override
+  void dispose() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+    super.dispose();
+  }
+
+  String _formatTime(int seconds) {
+    int hours = seconds ~/ 3600;
+    int minutes = (seconds % 3600) ~/ 60;
+    int remainingSeconds = seconds % 60;
+
+    return '$hours:${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // You can use _counter and _formatTime to display the countdown timer in your widget.
+     return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(220, 28, 232, 164),  toolbarHeight: 100,
+          elevation: 10,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+            ),
+          ),
+
+        )
+      )
+    );
+
+  }
+}
+
+
+
 /*
     Timer.periodic(const Duration(seconds: 1), (timer) { // Use Timer.periodic
       setState(() {

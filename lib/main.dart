@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:unifit/pages/countdown%20pool.dart';
+//import 'package:unifit/pages/countdown%20pool.dart';
+import 'package:unifit/pages/countdown_pool.dart';
+//import 'package:unifit/pages/deposite_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Help(),
+      home: const Countdown_Pool(),
     );
   }
 }
