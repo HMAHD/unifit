@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:unifit/pages/settings.dart';
-import 'package:unifit/pages/scanner.dart'; // Adjust the import path based on your project structure
-
+import 'package:unifit/pages/scanner.dart';
+import 'package:unifit/pages/user_profile.dart'; // Adjust the import path based on your project structure
 
 /// Represents the UI of a dashboard screen in a Flutter application.
 ///
@@ -107,14 +107,23 @@ class _DashboardState extends State<Dashboard> {
           actions: [
             Row(
               children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.black,
+                GestureDetector(
+                  onTap: () {
+                    // Define the navigation action here, for example, navigate to a profile page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UserProfile()),
+                    );
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.person,
+                      size: 40,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -326,7 +335,6 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
-
                           // Create a logger instance
                           var logger = Logger();
 
@@ -348,7 +356,6 @@ class _DashboardState extends State<Dashboard> {
                           // Print the scanned QR code result.
                           logger.i('Scanned QR code result: $result');
                           // You can now decide what to do with the scanned QR code result.
-
                         }
                       },
 
@@ -390,7 +397,6 @@ class _DashboardState extends State<Dashboard> {
 
                         // Check if the `result` is not null and is of type String.
                         if (result != null && result is String) {
-
                           // Create a logger instance
                           var logger = Logger();
 
@@ -413,7 +419,6 @@ class _DashboardState extends State<Dashboard> {
                           // Print the scanned QR code result.
                           logger.i('Scanned QR code result: $result');
                           // You can now decide what to do with the scanned QR code result.
-
                         }
                       },
 

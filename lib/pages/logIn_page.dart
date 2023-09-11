@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/register_page.dart';
+
 import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/register.dart';
 
