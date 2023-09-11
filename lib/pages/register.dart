@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _EditProfileState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _EditProfileState extends State<HomePage> {
+class _RegisterPageState extends State<RegisterPage> {
 <<<<<<< HEAD
   //bool _isObscure = true;  // show the password or not
 =======

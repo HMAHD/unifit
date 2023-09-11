@@ -1,4 +1,8 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/page/register_page.dart';
+import 'package:unifit/pages/register.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -66,6 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
+                  const SizedBox(height: 20),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
@@ -117,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                   InkWell(
                     onTap: () {},
                     child: Container(
@@ -144,18 +150,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
 
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don't have an account ? ",
-                    style: TextStyle(fontSize: 15),
+                  const Text(
+                    "Don't have account ? ",
+                    style: TextStyle(fontSize: 20),
                   ),
-                  /*TextButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -164,19 +170,19 @@ class _LoginPageState extends State<LoginPage> {
                                 const RegisterPage()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       "Sign Up",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),*/
+                  ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
         ],
       ),
     );
