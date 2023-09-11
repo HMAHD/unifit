@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/page/register_page.dart';
+import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -125,7 +126,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 50),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      // Use the Navigator to navigate to the desired page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Dashboard()),
+                      );
+                    },
                     child: Container(
                       width: 250,
                       height: 40,
