@@ -110,6 +110,7 @@ class QRScanner extends StatelessWidget {
 // ignore_for_file: library_private_types_in_public_api
 
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:provider/provider.dart'; // Import the provider package
