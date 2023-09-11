@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/settings.dart';
+import 'package:unifit/pages/user_profile.dart';
 
 class CountPool extends StatefulWidget {
   const CountPool({super.key});
@@ -29,7 +31,12 @@ class _CountPoolState extends State<CountPool> {
         leading: Padding(
           padding: const EdgeInsets.all(20.0),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
             child: const Icon(
               Icons.menu,
               size: 40,
@@ -51,17 +58,26 @@ class _CountPoolState extends State<CountPool> {
         actions: [
           Row(
             children: [
-              Container(
-                height: 40,
-                width: 40,
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.person,
-                  size: 40,
-                  color: Color.fromRGBO(48, 69, 91, 1.000),
+              GestureDetector(
+                onTap: () {
+                  // Define the navigation action here, for example, navigate to a profile page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserProfile()),
+                  );
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 width: 26,
               ),
             ],
