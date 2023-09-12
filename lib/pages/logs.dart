@@ -677,3 +677,53 @@ class _LogsPageState extends State<LogsPage> {
     );
   }
 }
+
+PreferredSizeWidget getCustomAppBar(BuildContext context) {
+  return PreferredSize(
+    preferredSize:
+        const Size.fromHeight(140.0), // Set the preferred height for the AppBar
+    child: AppBar(
+      leading: IconButton(
+        color: const Color(0xFF30445A),
+        icon: const Icon(Icons.menu),
+        tooltip: 'menu Icon',
+        onPressed: () {},
+        iconSize: 35,
+      ),
+      title: const Text(
+        "Transactions",
+        style: TextStyle(
+          color: Color(0xFF30445A),
+          fontSize: 30.0,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(
+            Icons.account_box,
+            color: Color(0xFF30445A),
+          ),
+          tooltip: 'Account Icon',
+          onPressed: () {},
+          iconSize: 35,
+        ),
+      ],
+      titleSpacing: 00.0,
+      centerTitle: true,
+      toolbarHeight: 100.2,
+      toolbarOpacity: 0.8,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+          bottomRight: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+        ),
+      ),
+      elevation: 0.00,
+      backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
+    ),
+  );
+}
