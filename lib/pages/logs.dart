@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unifit/pages/settings.dart';
 import 'dart:ui';
+
+import 'package:unifit/pages/user_profile.dart';
 
 class LogsPage extends StatefulWidget {
   const LogsPage({Key? key}) : super(key: key);
@@ -687,7 +690,12 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
         color: const Color(0xFF30445A),
         icon: const Icon(Icons.menu),
         tooltip: 'menu Icon',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+        },
         iconSize: 35,
       ),
       title: const Text(
@@ -705,8 +713,14 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
             Icons.account_box,
             color: Color(0xFF30445A),
           ),
-          tooltip: 'Account Icon',
-          onPressed: () {},
+          tooltip: 'Profile Icon',
+          onPressed: () {
+            // Define the navigation action here, for example, navigate to a profile page
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserProfile()),
+            );
+          },
           iconSize: 35,
         ),
       ],
