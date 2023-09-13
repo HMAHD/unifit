@@ -21,6 +21,7 @@ class introPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       automaticNavigation(context);
     });
@@ -80,6 +81,7 @@ class introPage extends StatelessWidget {
               ),
             ),
           ],
+
         ),
       ),
     );
