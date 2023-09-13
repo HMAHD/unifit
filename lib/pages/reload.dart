@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/user_profile.dart';
 
 class Reload extends StatefulWidget {
   const Reload({super.key});
@@ -9,79 +10,27 @@ class Reload extends StatefulWidget {
 }
 
 class _ReloadState extends State<Reload> {
+  double devHeight = 0;
+  double devWidth = 0;
+
   @override
   Widget build(BuildContext context) {
+    // Access MediaQuery in the build method
+    devHeight = MediaQuery.of(context).size.height;
+    devWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(220, 28, 232, 164),
-          toolbarHeight: 100,
-          elevation: 10,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
-            ),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Dashboard()),
-                );
-              },
-              child: const Icon(
-                Icons.menu,
-                size: 40,
-                color: Colors.black,
-              ),
-            ),
-          ),
-          title: const Center(
-            child: Text(
-              'Reload',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 30,
-                fontFamily: 'Poppins',
-              ),
-            ),
-          ),
-          actions: [
-            Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: const Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(
-                  width: 26,
-                ),
-              ],
-            )
-          ],
-        ),
         body: Column(
           children: [
-            SizedBox(height: 30),
+            getCustomAppBar(context),
+            SizedBox(height: devHeight * 0.10), // Add a SizedBox here
             Image.asset(
               "assets/10.png",
-              width: 250,
-              height: 250,
+              width: devWidth * 0.5,
+              height: devHeight * 0.25,
             ),
-            const SizedBox(
-                height: 20), // Add spacing between the image and text
+            SizedBox(height: devHeight * 0.05),
             const Text(
               "Transfer Successful",
               style: TextStyle(
@@ -92,7 +41,7 @@ class _ReloadState extends State<Reload> {
               ),
             ),
             SizedBox(
-              height: 7,
+              height: devHeight * 0.005,
             ),
             const Text(
               'Transfers are reviewed which may result in delays or funds being frozen.',
@@ -104,8 +53,7 @@ class _ReloadState extends State<Reload> {
                 fontFamily: 'Poppins',
               ),
             ),
-            SizedBox(height: 20),
-
+            SizedBox(height: devHeight * 0.02),
             const Text("500 RS",
                 style: TextStyle(
                   fontSize: 30,
@@ -113,13 +61,11 @@ class _ReloadState extends State<Reload> {
                   color: Colors.black,
                   fontFamily: 'Poppins',
                 )),
-            SizedBox(height: 20),
-
-            // ElevatedButton(onPressed: () {}, child: Text("Back to Home"))
+            SizedBox(height: devHeight * 0.02),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 3.5,
-                minimumSize: const Size(330, 60),
+                minimumSize: Size(devWidth * 0.55, devHeight * 0.07),
                 backgroundColor: const Color.fromARGB(220, 28, 232, 164),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -132,7 +78,7 @@ class _ReloadState extends State<Reload> {
                 );
               },
               child: const Text(
-                "Back to Dashbord",
+                "Back to Dashboard",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -140,8 +86,76 @@ class _ReloadState extends State<Reload> {
                 ),
               ),
             ),
-            // Add other widgets below the text
           ],
+        ),
+      ),
+    );
+  }
+
+  PreferredSizeWidget getCustomAppBar(BuildContext context) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(kToolbarHeight),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 1.0,
+          vertical: 2.0,
+        ),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), // Adjust the radius as needed
+              topRight: Radius.circular(20.0), // Adjust the radius as needed
+              bottomLeft: Radius.circular(20.0), // Adjust the radius as needed
+              bottomRight: Radius.circular(20.0), // Adjust the radius as needed
+            ),
+          ),
+          leading: IconButton(
+            padding: EdgeInsets.only(left: 12, bottom: devHeight * 0.04),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.menu,
+                color: Color.fromRGBO(48, 69, 91, 1.000),
+                size: devWidth * 0.1,
+              ),
+            ),
+            tooltip: 'menu Icon',
+            onPressed: () {},
+          ),
+          title: Padding(
+            padding: EdgeInsets.only(bottom: devHeight * 0.02),
+            child: Text(
+              "Profile",
+              style: TextStyle(
+                color: Color.fromRGBO(48, 69, 91, 1.000),
+                fontSize: devWidth * 0.08,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              padding: EdgeInsets.only(
+                  right: devWidth * 0.08, bottom: devHeight * 0.04),
+              icon: Icon(
+                Icons.account_box,
+                color: Color.fromRGBO(48, 69, 91, 1.000),
+                size: devWidth * 0.1,
+              ),
+              tooltip: 'Account Icon',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserProfile()),
+                );
+              },
+            ),
+          ],
+          titleSpacing: 0.10,
+          centerTitle: true,
+          toolbarHeight: 90,
+          elevation: 6.0,
+          backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
         ),
       ),
     );

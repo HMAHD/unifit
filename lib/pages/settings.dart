@@ -31,60 +31,30 @@ import 'package:flutter/material.dart';
 /// When the button is pressed, the [onPressed] callback function is called.
 class CustomBackButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final Widget child;
 
-  /// Creates a [CustomBackButton] widget.
-  ///
-  /// The [onPressed] parameter is a required callback function that is called when the button is pressed.
   const CustomBackButton({
-    Key? key,
+    super.key,
     required this.onPressed,
-  }) : super(key: key);
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50),
-      decoration: BoxDecoration(
-        color: Color(0xFF19A49C),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onPressed,
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  'Back to Dashboard',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          children: [
+            Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 24.0,
             ),
-          ),
+            const SizedBox(width: 8.0),
+            child,
+          ],
         ),
       ),
     );
@@ -246,16 +216,16 @@ class Settings extends StatelessWidget {
             ),
           ),
           Spacer(), // Add space to push the button to the bottom
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: CustomBackButton(
-              onPressed: () {
-                // Handle back button action here
-                Navigator.pop(
-                    context); // Example: Go back to the previous screen
-              },
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(bottom: 20),
+          //   child: CustomBackButton(
+          //     onPressed: () {
+          //       // Handle back button action here
+          //       Navigator.pop(
+          //           context); // Example: Go back to the previous screen
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );
