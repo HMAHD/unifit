@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:unifit/pages/scanner.dart';
-import 'package:unifit/pages/user_profile.dart'; // Adjust the import path based on your project structure
+import 'package:unifit/pages/user_profile.dart';
+
+import '../widgets/drawer_menu.dart';
+// Adjust the import path based on your project structure
 
 /// Represents the UI of a dashboard screen in a Flutter application.
 ///
@@ -62,8 +65,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //drawer: const Drawer(),
-
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -541,15 +543,27 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
         horizontal: 10.0,
       ),
       child: AppBar(
-        leading: IconButton(
-          padding: const EdgeInsets.only(left: 12, bottom: 20),
-          icon: const Icon(
-            Icons.menu,
-            color: Color.fromRGBO(48, 69, 91, 1.000),
-            size: 45,
-          ),
-          tooltip: 'menu Icon',
-          onPressed: () {},
+        leading: Builder(
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+              ),
+              child: IconButton(
+                padding: const EdgeInsets.only(left: 12, bottom: 20),
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromRGBO(48, 69, 91, 1.000),
+                  size: 45,
+                ),
+                tooltip: 'menu Icon',
+                onPressed: () {
+                  //
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            );
+          },
         ),
         title: const Padding(
           padding: EdgeInsets.only(bottom: 20),
