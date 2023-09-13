@@ -13,8 +13,6 @@ const Color myHexColor = Color.fromARGB(0, 0, 0, 0);
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    double devwidth = MediaQuery.of(context).size.width;
-    double devheight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
