@@ -1,6 +1,7 @@
 //tharusha
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/dashboard.dart';
 // create stateless widget
 
 class UserProfile extends StatefulWidget {
@@ -128,7 +129,12 @@ class _UserProfileState extends State<UserProfile> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Dashboard()),
+              );
+            },
             style: ElevatedButton.styleFrom(
               minimumSize: Size(width, height / 13),
               foregroundColor: Colors.white,
