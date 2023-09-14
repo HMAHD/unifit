@@ -1,19 +1,19 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:unifit/pages/countdown_gym_payment.dart';
+import 'package:unifit/pages/countdown_pool_payment.dart';
 import 'package:unifit/pages/dashboard.dart';
-import 'dart:async';
-
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class PoolTime extends StatefulWidget {
+  const PoolTime({Key? key}) : super(key: key);
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<PoolTime> createState() => _PoolTimeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _PoolTimeState extends State<PoolTime> {
   int _counter = 0;
   late Timer _timer;
 
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: devWidth /
                           30), // Add some space between the icon and text
                   Text(
-                    'Time Spent Gym',
+                    'Time Spent Pool',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CountGym()),
+                    MaterialPageRoute(builder: (context) => const CountPool()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
