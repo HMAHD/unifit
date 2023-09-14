@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/edit_profile.dart';
 import 'package:unifit/pages/help.dart';
 import 'package:unifit/pages/privacy_policy.dart';
 import 'package:unifit/pages/user_profile.dart';
@@ -87,6 +88,19 @@ class CustomDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Help()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.edit),
+            title: const Text(
+              'Edit Profile',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EditProfile()),
               );
             },
           ),

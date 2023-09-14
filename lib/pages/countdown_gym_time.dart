@@ -1,78 +1,104 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/dashboard.dart';
+import 'dart:async';
+
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
-import '../widgets/custom_text_field.dart';
-
-class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
-
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+  late Timer _timer;
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _counter++;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer(); // Start the timer automatically when the widget is initialized.
+  }
+
+  @override
+  void dispose() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+    super.dispose();
+  }
+
+  String _formatTime(int seconds) {
+    int hours = seconds ~/ 3600;
+    int minutes = (seconds % 3600) ~/ 60;
+    int remainingSeconds = seconds % 60;
+
+    return '$hours:${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
   @override
   Widget build(BuildContext context) {
-    double devHeight = MediaQuery.of(context).size.height;
-    double devWidth = MediaQuery.of(context).size.width;
     var size = MediaQuery.of(context).size;
     var width = size.width;
     var height = size.height;
     return Scaffold(
-      drawer: CustomDrawer(),
-      body: SingleChildScrollView(
+      drawer: const CustomDrawer(),
+      body: Center(
         child: Column(
           children: [
             const SizedBox(height: 35),
             getCustomAppBar(context),
-            SizedBox(
-              height: devHeight * 0.05,
+            const SizedBox(height: 35.0),
+            const Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // Center the children horizontally
+                children: [
+                  Text(
+                    'Time Spent GYM:',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'popins',
+                    ),
+                  ),
+                  // Icon(
+                  //   Icons., // Replace with your work-related icon
+                  //   size: 40,
+                  //   color: Colors.red, // Set the color to red
+                  // ),
+                ],
+              ),
             ),
-            CustomTextField(
-              icon: Icon(Icons.person),
-              title: 'Full Name',
-              isObscure: false,
-              hint: "Enter Your Full Name",
-              decoration: InputDecoration(),
-              keyboadType: TextInputType.name,
+            const SizedBox(height: 10.0),
+            Text(
+              _formatTime(_counter),
+              style: const TextStyle(
+                fontSize: 48.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'YourDesiredFont',
+              ),
             ),
-            SizedBox(
-              height: devHeight * 0.005,
-            ),
-            CustomTextField(
-              icon: Icon(Icons.email_outlined),
-              title: 'E-mail',
-              isObscure: false,
-              hint: "Enter Your Email",
-              decoration: InputDecoration(),
-              keyboadType: TextInputType.emailAddress,
-            ),
-            SizedBox(
-              height: devHeight * 0.005,
-            ),
-            CustomTextField(
-              icon: Icon(Icons.phone),
-              title: 'Phone Number',
-              isObscure: false,
-              hint: "Enter Your Phone Number",
-              decoration: InputDecoration(),
-              keyboadType: TextInputType.number,
-            ),
-            SizedBox(
-              height: devHeight * 0.3,
-            ),
+            const SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const Dashboard()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(width, height / 13),
@@ -83,7 +109,33 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 child: const Text(
-                  'Submit',
+                  'Finish',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(width, height / 13),
+                  foregroundColor: Colors.white,
+                  backgroundColor: HexColor('19a49c'),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
+                child: const Text(
+                  'Back to Home',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -130,7 +182,7 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
         title: const Padding(
           padding: EdgeInsets.only(bottom: 20),
           child: Text(
-            "Edit Profile",
+            "Countdown",
             style: TextStyle(
               color: Color.fromRGBO(48, 69, 91, 1.000),
               fontSize: 30.0,
