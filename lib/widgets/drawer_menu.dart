@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/help.dart';
 import 'package:unifit/pages/privacy_policy.dart';
 import 'package:unifit/pages/user_profile.dart';
 
@@ -83,10 +84,10 @@ class CustomDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Help()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Help()),
+              );
             },
           ),
           ListTile(
