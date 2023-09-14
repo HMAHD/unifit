@@ -214,7 +214,7 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
           builder: (BuildContext context) {
             return Padding(
               padding: const EdgeInsets.only(
-                left: 12,
+                left: 0,
               ),
               child: IconButton(
                 padding: const EdgeInsets.only(left: 12, bottom: 20),
