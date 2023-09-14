@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:unifit/pages/user_profile.dart';
+import 'package:unifit/widgets/drawer_menu.dart';
 
 class CountPool extends StatefulWidget {
   const CountPool({super.key});
@@ -15,6 +16,7 @@ class _CountPoolState extends State<CountPool> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      drawer: const CustomDrawer(),
       body: Column(
         children: [
           const SizedBox(height: 35),
@@ -205,15 +207,26 @@ PreferredSizeWidget getCustomAppBar(BuildContext context) {
         horizontal: 10.0,
       ),
       child: AppBar(
-        leading: IconButton(
-          padding: const EdgeInsets.only(left: 12, bottom: 20),
-          icon: const Icon(
-            Icons.menu,
-            color: Color.fromRGBO(48, 69, 91, 1.000),
-            size: 45,
-          ),
-          tooltip: 'menu Icon',
-          onPressed: () {},
+        leading: Builder(
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+              ),
+              child: IconButton(
+                padding: const EdgeInsets.only(left: 12, bottom: 20),
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromRGBO(48, 69, 91, 1.000),
+                  size: 45,
+                ),
+                tooltip: 'menu Icon',
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            );
+          },
         ),
         title: const Padding(
           padding: EdgeInsets.only(bottom: 20),
