@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
     double devwidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           const SizedBox(height: 35),
