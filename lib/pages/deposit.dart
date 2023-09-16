@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
 import 'user_profile.dart';
@@ -19,6 +18,7 @@ class _Payment_GatewayState extends State<Payment_Gateway> {
     double devwidth = MediaQuery.of(context).size.width;
     double devheight = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: const CustomDrawer(),
       body: Center(
         child: Container(
@@ -108,11 +108,11 @@ class _Payment_GatewayState extends State<Payment_Gateway> {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Dashboard()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => const Dashboard()),
+                      // );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(devwidth * 0.85, devheight / 14),

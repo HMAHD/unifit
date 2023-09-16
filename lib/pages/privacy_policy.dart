@@ -20,20 +20,20 @@ class _PrivacyState extends State<Privacy> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 10.0,
+        elevation: 8,
         toolbarHeight: height / 10,
         title:
             const Text("Privacy Policy", style: TextStyle(color: Colors.black)),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Dashboard()),
-            );
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back),
+        //   color: Colors.black,
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => const Dashboard()),
+        //     );
+        //   },
+        // ),
       ),
       body: const SingleChildScrollView(
         // Wrap the Column with SingleChildScrollView
