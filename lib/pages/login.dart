@@ -33,6 +33,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:logger/logger.dart';
+import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/register.dart';
 //import 'package:supabase_flutter/supabase_flutter.dart';
 
 final logger = Logger();
@@ -208,10 +210,11 @@ class _LoginPageState extends State<LoginPage> {
                     // },
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => const Dashboard()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Dashboard()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(devwidth * 0.85, devheight / 14),
@@ -246,7 +249,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Handle "Sign Up" action here.
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                      );
                     },
                     child: Text('Sign Up',
                         style: TextStyle(color: HexColor('4c548c'))),

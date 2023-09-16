@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
-import 'package:unifit/pages/dashboard.dart'; // Import the dashboard page
+import 'package:unifit/pages/login.dart'; // Import the dashboard page
 
 @NowaClass()
 class introPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class introPage extends StatelessWidget {
   void navigateToDashboard(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Dashboard()),
+      MaterialPageRoute(builder: (context) => const LoginPage()),
     );
   }
 
@@ -21,7 +21,6 @@ class introPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       automaticNavigation(context);
     });
@@ -81,7 +80,6 @@ class introPage extends StatelessWidget {
               ),
             ),
           ],
-
         ),
       ),
     );
