@@ -107,8 +107,8 @@ class _DashboardState extends State<Dashboard> {
                         },
                         icon: Icon(
                           _amountVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                           color: Colors.white,
                         ),
                       ),
