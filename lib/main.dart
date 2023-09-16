@@ -7,6 +7,7 @@ import 'package:unifit/pages/countdown_gym_payment.dart';
 //import 'package:unifit/pages/countdoun_gym_time.dart';
 import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/diposit.dart';
 //import 'package:unifit/pages/diposit.dart';
 import 'package:unifit/pages/edit_profile.dart';
 import 'package:unifit/pages/home.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
     logger.i('Building MyApp');
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: EditProfile(),
+      home: Payment_Gateway(),
     );
   }
 }
