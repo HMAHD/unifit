@@ -14,15 +14,15 @@ class introPage extends StatelessWidget {
     );
   }
 
-  Future<void> automaticNavigation(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 3));
-    navigateToDashboard(context);
-  }
+  // Future<void> automaticNavigation(BuildContext context) async {
+  //   await Future.delayed(const Duration(seconds: 3));
+  //   navigateToDashboard(context);
+  // }
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      automaticNavigation(context);
+      //  automaticNavigation(context);
     });
 
     return GestureDetector(
@@ -78,6 +78,13 @@ class introPage extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 colorBlendMode: BlendMode.saturation,
               ),
+            ),
+            //add your logo here
+            Positioned(
+              top: 680,
+              width: 120,
+              height: 120,
+              child: Center(child: Image(image: AssetImage('assets/nsbm.png'))),
             ),
           ],
         ),
