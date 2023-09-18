@@ -170,7 +170,7 @@ class _DashboardState extends State<Dashboard> {
                                       'Gym',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                       ),
                                     ),
                                     SizedBox(height: 4),
@@ -219,7 +219,7 @@ class _DashboardState extends State<Dashboard> {
                                       'Pool',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                       ),
                                     ),
                                     SizedBox(height: 4),
