@@ -118,7 +118,7 @@ class _DashboardState extends State<Dashboard> {
                   Row(
                     children: [
                       Text(
-                        _amountVisible ? 'RS $_creditAmount.00' : 'RS *****',
+                        _amountVisible ? 'RS $_creditAmount.00' : 'RS ****.**',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,

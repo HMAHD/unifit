@@ -1,4 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/edit_profile.dart';
+import 'package:unifit/pages/help.dart';
+import 'package:unifit/pages/privacy_policy.dart';
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
@@ -47,46 +54,27 @@ class CustomBackButton extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var width = size.width;
     var height = size.height;
-    return Container(
-      height: height / 14,
-      width: width / 1,
-      margin: EdgeInsets.symmetric(horizontal: 50),
-      decoration: BoxDecoration(
-        color: Color(0xFF19A49C),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Dashboard()),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(width, height / 13),
+          foregroundColor: Colors.white,
+          backgroundColor: HexColor('19a49c'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
           ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onPressed,
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(width: 8),
-                Text(
-                  'Back to Dashboard',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
+        ),
+        child: const Text(
+          'Back to Dashboard',
+          style: TextStyle(
+            fontSize: 20,
           ),
         ),
       ),
@@ -106,93 +94,107 @@ class Settings extends StatelessWidget {
         children: [
           SizedBox(height: 35),
           getCustomAppBar(context),
-          SizedBox(height: 15),
+          SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Color.fromARGB(255, 197, 250, 235),
-              ),
-              //color: Color(0xFFE4F7F2),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    'Options',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+            child: Material(
+              elevation: 10,
+              borderRadius: BorderRadius.circular(18),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  color: Color.fromARGB(255, 197, 250, 235),
+                ),
+
+                //color: Color(0xFFE4F7F2),
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Options',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.person,
-                    title: 'Edit Profile',
-                    onTap: () {
-                      // Navigate to Edit Profile page
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.security,
-                    title: 'Security',
-                    onTap: () {
-                      // Navigate to Security page
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.notifications,
-                    title: 'Notification',
-                    onTap: () {
-                      // Navigate to Notification page
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.payment,
-                    title: 'Payment',
-                    onTap: () {
-                      // Navigate to Payment page
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Actions',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                    SizedBox(height: 20),
+                    SettingsItem(
+                      icon: Icons.person,
+                      title: 'Edit Profile',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EditProfile()),
+                        );
+                      },
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.privacy_tip,
-                    title: 'Privacy Policy',
-                    onTap: () {
-                      // Navigate to Notification page
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.help,
-                    title: 'Help & Support',
-                    onTap: () {
-                      // Navigate to Payment page
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SettingsItem(
-                    icon: Icons.logout,
-                    title: 'Log Out',
-                    onTap: () {
-                      // Navigate to Notification page
-                    },
-                  ),
-                ],
+                    SizedBox(height: 20),
+                    // SettingsItem(
+                    //   icon: Icons.security,
+                    //   title: 'Security',
+                    //   onTap: () {
+                    //     // Navigate to Security page
+                    //   },
+                    // ),
+                    // SizedBox(height: 10),
+                    // SettingsItem(
+                    //   icon: Icons.notifications,
+                    //   title: 'Notification',
+                    //   onTap: () {
+                    //     // Navigate to Notification page
+                    //   },
+                    // ),
+                    //SizedBox(height: 10),
+                    SettingsItem(
+                      icon: Icons.payment,
+                      title: 'Payment',
+                      onTap: () {
+                        // Navigate to Payment page
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    // Text(
+                    //   'Actions',
+                    //   style: TextStyle(
+                    //     fontSize: 24,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.black,
+                    //   ),
+                    // ),
+                    //SizedBox(height: 10),
+                    SettingsItem(
+                      icon: Icons.privacy_tip,
+                      title: 'Privacy Policy',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Privacy()),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    SettingsItem(
+                      icon: Icons.help,
+                      title: 'Help & Support',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Help()),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    SettingsItem(
+                        icon: Icons.logout,
+                        title: 'Log Out',
+                        onTap: () => exit(0)),
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
           ),
