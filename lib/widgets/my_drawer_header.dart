@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/edit_profile.dart';
 
 class MyHeaderDrawer extends StatefulWidget {
   const MyHeaderDrawer({super.key});
@@ -27,11 +28,31 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             ),
           ),
         ),
-        const Text('John Doe',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600)),
+        Padding(
+          padding: const EdgeInsets.only(left: 25.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.values[2],
+            children: [
+              const Text('John Doe',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w600)),
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditProfile()),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  )),
+            ],
+          ),
+        ),
         const Text(
           'Johndoe@gmail.com',
           style: TextStyle(

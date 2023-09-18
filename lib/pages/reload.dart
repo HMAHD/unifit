@@ -89,7 +89,7 @@ class _ReloadState extends State<Reload> {
                 ),
               ),
               child: const Text(
-                'Back to Home',
+                'Back to Dashboard',
                 style: TextStyle(
                   fontSize: 20,
                 ),

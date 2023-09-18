@@ -167,7 +167,7 @@ class _PoolTimeState extends State<PoolTime> {
                   ),
                 ),
                 child: const Text(
-                  'Back to Home',
+                  'Back to Dashboard',
                   style: TextStyle(
                     fontSize: 20,
                   ),

@@ -149,7 +149,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                 ),
                 child: const Text(
-                  'Back to Home',
+                  'Back to Dashboard',
                   style: TextStyle(
                     fontSize: 20,
                   ),

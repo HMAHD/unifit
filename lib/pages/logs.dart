@@ -891,7 +891,8 @@ class _LogsPageState extends State<LogsPage> {
               borderRadius: BorderRadius.circular(18),
             ),
           ),
-          child: const Text('Back to Home', style: TextStyle(fontSize: 20)),
+          child:
+              const Text('Back to Dashboard', style: TextStyle(fontSize: 20)),
         ),
       ),
     );

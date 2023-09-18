@@ -1,10 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:unifit/pages/dashboard.dart';
-import 'package:unifit/pages/deposit.dart';
-import 'package:unifit/pages/edit_profile.dart';
 import 'package:unifit/pages/help.dart';
 import 'package:unifit/pages/logs.dart';
 import 'package:unifit/pages/privacy_policy.dart';
+import 'package:unifit/pages/settings.dart';
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/my_drawer_header.dart';
 
@@ -47,15 +48,15 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text(
-              'Deposit',
+              'Credit',
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const Payment_Gateway()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => const Payment_Gateway()),
+              // );
             },
           ),
           ListTile(
@@ -85,19 +86,6 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.edit),
-            title: const Text(
-              'Edit Profile',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const EditProfile()),
-              );
-            },
-          ),
-          ListTile(
             leading: const Icon(Icons.security),
             title: const Text(
               'Privacy Policy',
@@ -117,10 +105,10 @@ class CustomDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Settings()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Settings()),
+              );
             },
           ),
           ListTile(
@@ -129,12 +117,7 @@ class CustomDrawer extends StatelessWidget {
               'Logout',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const Logout()),
-              // );
-            },
+            onTap: () => exit(0),
           ),
         ],
       ),

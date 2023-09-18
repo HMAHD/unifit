@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 child: const Text(
-                  'Back to Home',
+                  'Back to Dashboard',
                   style: TextStyle(
                     fontSize: 20,
                   ),

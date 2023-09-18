@@ -214,7 +214,7 @@ class _HelpState extends State<Help> {
                   ),
                 ),
                 child: const Text(
-                  'Back to Home',
+                  'Back to Dashboard',
                   style: TextStyle(
                     fontSize: 20,
                   ),
