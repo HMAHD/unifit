@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/help.dart';
 import 'package:unifit/pages/logs.dart';
@@ -52,23 +53,9 @@ class CustomDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //       builder: (context) => const Payment_Gateway()),
-              // );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text(
-              'Help & Support',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Help()),
+                MaterialPageRoute(builder: (context) => const Credit()),
               );
             },
           ),
@@ -82,6 +69,19 @@ class CustomDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LogsPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.help),
+            title: const Text(
+              'Help & Support',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Help()),
               );
             },
           ),

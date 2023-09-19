@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // Import for kReleaseMode// Import the logger package
 import 'package:provider/provider.dart';
-import 'package:unifit/pages/intro_page.dart';
+import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/timer_state.dart';
 // Import your TimerState class
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: introPage(),
+      home: Credit(),
     );
   }
 }
