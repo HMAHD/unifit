@@ -72,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
           children: [
             SizedBox(height: 35),
             getCustomAppBar(context),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               padding: EdgeInsets.all(16),
@@ -242,7 +242,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               padding: EdgeInsets.all(16),
@@ -381,7 +381,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               padding: EdgeInsets.all(16),
@@ -499,6 +499,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),

@@ -63,7 +63,7 @@ class _ReloadState extends State<Reload> {
             ),
           ),
           SizedBox(height: devHeight * 0.05),
-          const Text("500 RS",
+          const Text("RS 500 ",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

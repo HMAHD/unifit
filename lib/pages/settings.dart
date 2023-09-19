@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/credit.dart';
 import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/edit_profile.dart';
 import 'package:unifit/pages/help.dart';
@@ -150,9 +151,13 @@ class Settings extends StatelessWidget {
                     //SizedBox(height: 10),
                     SettingsItem(
                       icon: Icons.payment,
-                      title: 'Payment',
+                      title: 'Credit',
                       onTap: () {
-                        // Navigate to Payment page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Credit()),
+                        );
                       },
                     ),
                     SizedBox(height: 20),
