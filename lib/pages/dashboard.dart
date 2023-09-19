@@ -428,7 +428,7 @@ class _DashboardState extends State<Dashboard> {
                         SizedBox(height: 8),
                         Text(
                           // Replace this with actual news text from database
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget lorem sed leo tincidunt tristique nec eget odio.',
+                          'The NSBM Gymnasium is a state-of-the-art facility that is equipped with the latest equipment and technology to ensure that you get the best out of your workout.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey[700],
@@ -487,7 +487,7 @@ class _DashboardState extends State<Dashboard> {
                         SizedBox(height: 8),
                         Text(
                           // Replace this with actual news text from database
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget lorem sed leo tincidunt tristique nec eget odio.',
+                          'With its state-of-the-art, international-level swimming pool and additional facilities, the NSBM Swimming Club is your getaway to a World of aquatic excellence and camaraderie.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey[700],
