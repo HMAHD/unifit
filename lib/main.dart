@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// Import for kReleaseMode// Import the logger package
 import 'package:provider/provider.dart';
 import 'package:unifit/pages/intro_page.dart';
 import 'package:unifit/pages/timer_state.dart';
