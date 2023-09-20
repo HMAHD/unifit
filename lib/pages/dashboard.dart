@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:unifit/pages/settings.dart';
-import 'package:unifit/pages/scanner.dart'; // Adjust the import path based on your project structure
+import 'package:unifit/pages/scanner.dart';
+import 'package:unifit/pages/user_profile.dart';
 
+import '../widgets/drawer_menu.dart';
+// Adjust the import path based on your project structure
 
 /// Represents the UI of a dashboard screen in a Flutter application.
 ///
@@ -62,509 +64,443 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        //drawer: const Drawer(),
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(220, 28, 232, 164),
-          toolbarHeight: 100,
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
-            ),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Settings()),
-                );
-              },
-              child: Icon(
-                Icons.menu,
-                size: 40,
-                color: Colors.black,
+    return Scaffold(
+      drawer: CustomDrawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: 35),
+            getCustomAppBar(context),
+            SizedBox(height: 15),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 164, 164, 212),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Credit Balance',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _amountVisible = !_amountVisible;
+                          });
+                        },
+                        icon: Icon(
+                          _amountVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Text(
+                        _amountVisible ? 'RS $_creditAmount.00' : 'RS ****.**',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    'Account ID: 1234567890',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => GymPage()),
+                          );
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.fitness_center,
+                                color: Colors.black,
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Gym',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    SizedBox(height: 4),
+                                    Text(
+                                      formatTime(_calculatedGymTime),
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PoolPage()),
+                          );
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.pool,
+                                color: Colors.black,
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Pool',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    SizedBox(height: 4),
+                                    Text(
+                                      formatTime(_calculatedPoolTime),
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
-          title: Center(
-            child: Text(
-              'Dashboard',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 30,
-                fontFamily: 'Poppins',
+            SizedBox(height: 15),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 228, 247, 242),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    // Define an `onTap` callback function that returns a Future.
+                    onTap: () async {
+                      // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QRScannerScreen(),
+                        ),
+                      );
+
+                      // Check if the `result` is not null and is of type String.
+                      if (result != null && result is String) {
+                        // Create a logger instance
+                        var logger = Logger();
+
+                        // Print the scanned QR code result.
+                        logger.i('Scanned QR code result: $result');
+
+                        // Now you can decide what to do with the scanned QR code result.
+                        if (result == 'GYM-START') {
+                          // Handle gym start action
+                        } else if (result == 'GYM-END') {
+                          // Handle gym end action
+                        } else if (result == 'POOL-START') {
+                          // Handle pool start action
+                        } else if (result == 'POOL-END') {
+                          // Handle pool end action
+                        } else {
+                          // Handle other cases
+                        }
+                        // Print the scanned QR code result.
+                        logger.i('Scanned QR code result: $result');
+                        // You can now decide what to do with the scanned QR code result.
+                      }
+                    },
+
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 25, 166, 156),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.fitness_center,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            ' GYM',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    // Define an `onTap` callback function that returns a Future.
+                    onTap: () async {
+                      // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QRScannerScreen(),
+                        ),
+                      );
+
+                      // Check if the `result` is not null and is of type String.
+                      if (result != null && result is String) {
+                        // Create a logger instance
+                        var logger = Logger();
+
+                        // Print the scanned QR code result.
+                        logger.i('Scanned QR code result: $result');
+
+                        // Now you can decide what to do with the scanned QR code result.
+                        if (result == 'GYM-START') {
+                          // Handle gym start action
+                        } else if (result == 'GYM-END') {
+                          // Handle gym end action
+                        } else if (result == 'POOL-START') {
+                          // Handle pool start action
+                        } else if (result == 'POOL-END') {
+                          // Handle pool end action
+                        } else {
+                          // Handle other cases
+                        }
+
+                        // Print the scanned QR code result.
+                        logger.i('Scanned QR code result: $result');
+                        // You can now decide what to do with the scanned QR code result.
+                      }
+                    },
+
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 25, 166, 156),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.pool,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            'POOL',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          actions: [
-            Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.black,
+            SizedBox(height: 15),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
                   ),
-                ),
-                SizedBox(
-                  width: 26,
-                ),
-              ],
-            )
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: 20),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 164, 164, 212),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                ],
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      Icons.fitness_center,
+                      color: Colors.black,
+                      size: 40,
+                    ),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Credit Balance',
+                          'Updates for Gym',
                           style: TextStyle(
-                            color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _amountVisible = !_amountVisible;
-                            });
-                          },
-                          icon: Icon(
-                            _amountVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.white,
+                        SizedBox(height: 8),
+                        Text(
+                          // Replace this with actual news text from database
+                          'The NSBM Gymnasium is a state-of-the-art facility that is equipped with the latest equipment and technology to ensure that you get the best out of your workout.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[700],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
-                    Row(
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      Icons.pool,
+                      color: Colors.black,
+                      size: 40,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _amountVisible ? 'RS $_creditAmount.00' : 'RS *****',
+                          'Updates for Pool',
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    Text(
-                      'Account ID: 1234567890',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => GymPage()),
-                            );
-                          },
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.fitness_center,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(width: 8),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Gym',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      SizedBox(height: 4),
-                                      Text(
-                                        formatTime(_calculatedGymTime),
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PoolPage()),
-                            );
-                          },
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.pool,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(width: 8),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Pool',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      SizedBox(height: 4),
-                                      Text(
-                                        formatTime(_calculatedPoolTime),
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                        SizedBox(height: 8),
+                        Text(
+                          // Replace this with actual news text from database
+                          'With its state-of-the-art, international-level swimming pool and additional facilities, the NSBM Swimming Club is your getaway to a World of aquatic excellence and camaraderie.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[700],
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(height: 26),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 228, 247, 242),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      // Define an `onTap` callback function that returns a Future.
-                      onTap: () async {
-                        // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
-                        final result = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QRScannerScreen(),
-                          ),
-                        );
-
-                        // Check if the `result` is not null and is of type String.
-                        if (result != null && result is String) {
-
-                          // Create a logger instance
-                          var logger = Logger();
-
-                          // Print the scanned QR code result.
-                          logger.i('Scanned QR code result: $result');
-
-                          // Now you can decide what to do with the scanned QR code result.
-                          if (result == 'GYM-START') {
-                            // Handle gym start action
-                          } else if (result == 'GYM-END') {
-                            // Handle gym end action
-                          } else if (result == 'POOL-START') {
-                            // Handle pool start action
-                          } else if (result == 'POOL-END') {
-                            // Handle pool end action
-                          } else {
-                            // Handle other cases
-                          }
-                          // Print the scanned QR code result.
-                          logger.i('Scanned QR code result: $result');
-                          // You can now decide what to do with the scanned QR code result.
-
-                        }
-                      },
-
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 25, 166, 156),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.fitness_center,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              ' GYM',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      // Define an `onTap` callback function that returns a Future.
-                      onTap: () async {
-                        // Use the `Navigator.push` method to navigate to the `QRScannerScreen` widget.
-                        final result = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QRScannerScreen(),
-                          ),
-                        );
-
-                        // Check if the `result` is not null and is of type String.
-                        if (result != null && result is String) {
-
-                          // Create a logger instance
-                          var logger = Logger();
-
-                          // Print the scanned QR code result.
-                          logger.i('Scanned QR code result: $result');
-
-                          // Now you can decide what to do with the scanned QR code result.
-                          if (result == 'GYM-START') {
-                            // Handle gym start action
-                          } else if (result == 'GYM-END') {
-                            // Handle gym end action
-                          } else if (result == 'POOL-START') {
-                            // Handle pool start action
-                          } else if (result == 'POOL-END') {
-                            // Handle pool end action
-                          } else {
-                            // Handle other cases
-                          }
-
-                          // Print the scanned QR code result.
-                          logger.i('Scanned QR code result: $result');
-                          // You can now decide what to do with the scanned QR code result.
-
-                        }
-                      },
-
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 25, 166, 156),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.pool,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'POOL',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 26),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(
-                        Icons.fitness_center,
-                        color: Colors.black,
-                        size: 40,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Updates for Gym',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            // Replace this with actual news text from database
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget lorem sed leo tincidunt tristique nec eget odio.',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(
-                        Icons.pool,
-                        color: Colors.black,
-                        size: 40,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Updates for Pool',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            // Replace this with actual news text from database
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget lorem sed leo tincidunt tristique nec eget odio.',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+          ],
         ),
       ),
     );
@@ -597,4 +533,82 @@ class PoolPage extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget getCustomAppBar(BuildContext context) {
+  return PreferredSize(
+    preferredSize:
+        const Size.fromHeight(140.0), // Set the preferred height for the AppBar
+    child: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10.0,
+      ),
+      child: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 0,
+              ),
+              child: IconButton(
+                padding: const EdgeInsets.only(left: 12, bottom: 20),
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromRGBO(48, 69, 91, 1.000),
+                  size: 45,
+                ),
+                tooltip: 'menu Icon',
+                onPressed: () {
+                  //
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            );
+          },
+        ),
+        title: const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text(
+            "Dashboard",
+            style: TextStyle(
+              color: Color.fromRGBO(48, 69, 91, 1.000),
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            padding: const EdgeInsets.only(right: 32.0, bottom: 20),
+            icon: const Icon(
+              Icons.account_box,
+              color: Color.fromRGBO(48, 69, 91, 1.000),
+              size: 45,
+            ),
+            tooltip: 'Account Icon',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UserProfile()),
+              );
+            },
+          ),
+        ],
+        titleSpacing: 0,
+        centerTitle: true,
+        toolbarHeight: 90,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
+          ),
+        ),
+        elevation: 6.0,
+        backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
+      ),
+    ),
+  );
 }

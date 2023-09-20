@@ -16,7 +16,7 @@ class TimerState extends ChangeNotifier {
     _seconds = 0;
     _minutes = 0;
     _hours = 0;
-    notifyListeners();
+    //notifyListeners();
   }
 
   void stopTimer() {

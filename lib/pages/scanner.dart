@@ -1,79 +1,7 @@
-/*
 import 'package:flutter/material.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
-
-const bgColor = Color(0xfffafafa);
-
-class QRScanner extends StatelessWidget {
-  const QRScanner({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          "QR Scanner",
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1,
-          ),
-        ),
-      ),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Place the QR code in the area",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Scanning will be started automatically",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black54,
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: MobileScanner(
-                onDetect: (barcodes) {},
-              ),
-            ),
-            Expanded(
-              child: Container(
-                alignment: Alignment.center,
-                child: const Text(
-                  "Developed by Baaba devs",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-----Amasha PR Conflic end -----
-*/ 
-
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:provider/provider.dart';
+import 'package:unifit/pages/timer_state.dart';
 
 /// The `QRScannerScreen` class is a StatefulWidget that displays a QR scanner screen. It initializes the QR scanner, handles the scanned QR code, and updates the UI based on the session type and timer state.
 ///
@@ -107,15 +35,6 @@ class QRScanner extends StatelessWidget {
 
 // ignore_for_file: library_private_types_in_public_api
 
-// ignore_for_file: library_private_types_in_public_api
-
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:provider/provider.dart'; // Import the provider package
-import 'package:unifit/pages/timer_state.dart'; // Import your TimerState class
-
 class QRScannerScreen extends StatefulWidget {
   const QRScannerScreen({super.key});
 
@@ -127,7 +46,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   late QRViewController controller;
   bool isScanned = false;
-
   String sessionType = ''; // Variable to store the session type (gym or pool)
 
   @override
@@ -179,7 +97,14 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     final timerState = Provider.of<TimerState>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('QR Scanner')),
+      appBar: AppBar(
+          title: const Text('Scan QR Code'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
       body: Column(
         children: [
           Expanded(
@@ -192,7 +117,8 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           const Expanded(
             flex: 1,
             child: Center(
-              child: Text('Scan the specific QR code for Gym or Pool'),
+              child: Text('Scan the specific QR code for Gym or Pool',
+                  style: TextStyle(fontSize: 18)),
             ),
           ),
           // Display the timer using the values from TimerState
@@ -215,5 +141,4 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     controller.dispose();
     super.dispose();
   }
-
 }

@@ -31,8 +31,11 @@
 /// - `Widget`: The built widget tree for the login page.
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:logger/logger.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/register.dart';
+//import 'package:supabase_flutter/supabase_flutter.dart';
 
 final logger = Logger();
 
@@ -47,21 +50,25 @@ class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
   bool _rememberMe = false;
 
-  final supabase = Supabase.instance.client;
+  //final supabase = Supabase.instance.client;
 
   @override
   Widget build(BuildContext context) {
+    double devheight = MediaQuery.of(context).size.height;
+    double devwidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 35),
           getCustomAppBar(context),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 90),
+                  SizedBox(height: devheight * 0.05),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: Text(
@@ -75,16 +82,31 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: Text('Email',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontFamily: 'Poppins',
+                            )),
+                      ),
+                    ],
+                  ),
                   Form(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter Your Email.',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          labelText: 'Enter your email.',
                         ),
                         validator: (value) {
                           final emailRegex = RegExp(
@@ -97,14 +119,30 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: Text('Password',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontFamily: 'Poppins',
+                            )),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: TextField(
                       obscureText: _isObscure,
                       decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: 'Password',
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                        labelText: 'Enter your password.',
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isObscure
@@ -121,8 +159,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
                         children: [
@@ -137,51 +176,58 @@ class _LoginPageState extends State<LoginPage> {
                           const Text('Remember Me'),
                         ],
                       ),
+                      SizedBox(width: devheight * 0.05),
                       TextButton(
                         onPressed: () {
                           // Handle "Forget Password" action here.
                         },
-                        child: const Text('Forget Password?'),
+                        child: const Text('Forget Password?',
+                            style: TextStyle(color: Colors.red)),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: devheight * 0.12),
                   InkWell(
-                    onTap: () async {
-                      final email =
-                          getEmailFromTextField(); // Replace with your implementation
-                      final password =
-                          getPasswordFromTextField(); // Replace with your implementation
+                    // onTap: () async {
+                    //   final email =
+                    //       getEmailFromTextField(); // Replace with your implementation
+                    //   final password =
+                    //       getPasswordFromTextField(); // Replace with your implementation
 
-                      final response = await supabase.auth.signIn(
-                        email: email,
-                        password: password,
-                      );
+                    //   final response = await supabase.auth.signIn(
+                    //     email: email,
+                    //     password: password,
+                    //   );
 
-                      if (response.error != null) {
-                        final errorMessage = response.error!.message;
-                        showErrorMessage(errorMessage);
-                      } else {
-                        final user = response.data;
-                        logger.i('Sign-in successful: ${user!.email}');
-                        navigateToNextScreen();
-                      }
-                    },
-                    child: Container(
-                      width: 250,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(5),
+                    //   if (response.error != null) {
+                    //     final errorMessage = response.error!.message;
+                    //     showErrorMessage(errorMessage);
+                    //   } else {
+                    //     final user = response.data;
+                    //     logger.i('Sign-in successful: ${user!.email}');
+                    //     navigateToNextScreen();
+                    //   }
+                    // },
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Dashboard()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(devwidth * 0.85, devheight / 14),
+                        foregroundColor: Colors.white,
+                        backgroundColor: HexColor('19a49c'),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -190,16 +236,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          const SizedBox(
-            width: double.infinity,
+          SizedBox(
+            height: devheight * 0.06,
             child: Align(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.center,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account ? ",
                     style: TextStyle(fontSize: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                      );
+                    },
+                    child: Text('Sign Up',
+                        style: TextStyle(color: HexColor('4c548c'))),
                   ),
                 ],
               ),
@@ -235,44 +292,58 @@ class _LoginPageState extends State<LoginPage> {
 
 PreferredSizeWidget getCustomAppBar(BuildContext context) {
   return PreferredSize(
-    preferredSize: const Size.fromHeight(140.0),
-    child: AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        tooltip: 'menu Icon',
-        onPressed: () {},
+    preferredSize:
+        const Size.fromHeight(140.0), // Set the preferred height for the AppBar
+    child: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10.0,
       ),
-      title: const Text(
-        "UniFit",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold,
+      child: AppBar(
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                bottom: 20,
+                left: 10,
+              ),
+              child: Row(
+                children: [
+                  const Text(
+                    "UniFit",
+                    style: TextStyle(
+                      color: Color.fromRGBO(48, 69, 91, 1.000),
+                      fontSize: 40.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 120),
+                  Stack(
+                    children: [
+                      Image.asset('assets/unifit.png'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-      ),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(
-            Icons.account_box,
+        //add image here
+
+        titleSpacing: 0,
+        centerTitle: true,
+        toolbarHeight: 90,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
           ),
-          tooltip: 'Account Icon',
-          onPressed: () {},
         ),
-      ],
-      titleSpacing: 00.0,
-      centerTitle: true,
-      toolbarHeight: 100.2,
-      toolbarOpacity: 0.8,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(25),
-          bottomRight: Radius.circular(25),
-          bottomLeft: Radius.circular(25),
-        ),
+        elevation: 6.0,
+        backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
       ),
-      elevation: 0.00,
-      backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
     ),
   );
 }
