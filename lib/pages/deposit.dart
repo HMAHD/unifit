@@ -75,7 +75,7 @@ class _Payment_GatewayState extends State<Payment_Gateway> {
                               borderRadius: BorderRadius.circular(15.0),
                             ),
                           ),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                         ),
                       ),
                       const SizedBox(width: 20),

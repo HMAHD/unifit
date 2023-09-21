@@ -137,6 +137,7 @@ class _EditProfileState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
+                obscureText: _isObscure,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -159,10 +160,10 @@ class _EditProfileState extends State<HomePage> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const Dashboard()),
-                // );
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(devwidth * 0.85, devheight / 14),

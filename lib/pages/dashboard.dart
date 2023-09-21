@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:unifit/pages/scanner.dart';
+import 'package:unifit/pages/gym_scanner.dart';
+import 'package:unifit/pages/pool_scanner.dart';
 import 'package:unifit/pages/user_profile.dart';
 
 import '../widgets/drawer_menu.dart';
@@ -260,7 +261,7 @@ class _DashboardState extends State<Dashboard> {
                       final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QRScannerScreen(),
+                          builder: (context) => QRCodeScannerPage(),
                         ),
                       );
 
@@ -322,7 +323,7 @@ class _DashboardState extends State<Dashboard> {
                       final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QRScannerScreen(),
+                          builder: (context) => PoolQRScanner(),
                         ),
                       );
 

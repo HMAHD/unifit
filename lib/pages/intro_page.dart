@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
 import 'package:unifit/pages/login.dart'; // Import the dashboard page
 
@@ -26,7 +27,9 @@ class introPage extends StatelessWidget {
     });
 
     return GestureDetector(
-      onTap: () => navigateToDashboard(context),
+      // onTap: () {
+      //   navigateToDashboard(context);
+      // },
       child: Scaffold(
         body: Stack(
           fit: StackFit.expand,
@@ -79,6 +82,17 @@ class introPage extends StatelessWidget {
                 colorBlendMode: BlendMode.saturation,
               ),
             ),
+            Positioned(
+                bottom: 220,
+                width: 300,
+                height: 4,
+                child: SizedBox(
+                  child: LinearProgressIndicator(
+                    backgroundColor: HexColor("ffffff"),
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(HexColor("66ae1c")),
+                  ),
+                )),
             //add your logo here
             Positioned(
               top: 680,

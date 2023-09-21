@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:unifit/pages/countdown_pool_payment.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/end_pool_scanner.dart';
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
@@ -75,7 +75,7 @@ class _PoolTimeState extends State<PoolTime> {
                   ),
                   SizedBox(
                       width: devWidth /
-                          30), // Add some space between the icon and text
+                          45), // Add some space between the icon and text
                   Text(
                     'Time Spent Pool',
                     style: TextStyle(
@@ -129,7 +129,8 @@ class _PoolTimeState extends State<PoolTime> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CountPool()),
+                    MaterialPageRoute(
+                        builder: (context) => const EndPoolScanner()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

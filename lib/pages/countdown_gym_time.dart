@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:unifit/pages/countdown_gym_payment.dart';
 import 'package:unifit/pages/dashboard.dart';
+import 'package:unifit/pages/end_gym_scanner.dart';
 import 'dart:async';
 
 import 'package:unifit/pages/user_profile.dart';
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   SizedBox(
                       width: devWidth /
-                          30), // Add some space between the icon and text
+                          40), // Add some space between the icon and text
                   Text(
                     'Time Spent Gym',
                     style: TextStyle(
@@ -129,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CountGym()),
+                    MaterialPageRoute(
+                        builder: (context) => const EndGymScanner()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
