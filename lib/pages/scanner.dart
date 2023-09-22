@@ -28,14 +28,9 @@
 /// Outputs:
 /// - The UI of the QR scanner screen is displayed, including the QR view, a message to scan the specific QR code, the timer value from the `TimerState` provider, and the session status or total time spent.
 
-// ignore_for_file: library_private_types_in_public_api
-
-// ignore_for_file: library_private_types_in_public_api
-
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:provider/provider.dart'; // Import the provider package
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:unifit/pages/timer_state.dart'; // Import your TimerState class
 
 class QRScannerScreen extends StatefulWidget {
