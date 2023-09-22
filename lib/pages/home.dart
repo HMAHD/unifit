@@ -32,11 +32,11 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: AppBar(
           leading: IconButton(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: 12),
             icon: const Icon(
               Icons.menu,
               color: Color.fromRGBO(48, 69, 91, 1.000),
-              size: 30,
+              size: 45,
             ),
             tooltip: 'menu Icon',
             onPressed: () {},
@@ -45,25 +45,25 @@ class _HomeState extends State<Home> {
             "Profile",
             style: TextStyle(
               color: Color.fromRGBO(48, 69, 91, 1.000),
-              fontSize: 20.0,
+              fontSize: 30.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           actions: <Widget>[
             IconButton(
-              padding: const EdgeInsets.only(right: 40.0),
+              padding: const EdgeInsets.only(right: 32.0),
               icon: const Icon(
                 Icons.account_box,
                 color: Color.fromRGBO(48, 69, 91, 1.000),
-                size: 40,
+                size: 45,
               ),
               tooltip: 'Account Icon',
               onPressed: () {},
             ),
           ],
-          titleSpacing: 00.0,
+          titleSpacing: 0,
           centerTitle: true,
-          toolbarHeight: 100.2,
+          toolbarHeight: 90,
           toolbarOpacity: 0.8,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
               bottomLeft: Radius.circular(25),
             ),
           ),
-          elevation: 0.00,
+          elevation: 6.0,
           backgroundColor: const Color.fromRGBO(70, 245, 202, 1),
         ),
       ),

@@ -45,7 +45,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.unifit"
-        minSdkVersion 20 // Change the minSdkVersion to 20
+        minSdkVersion 21 // Change the minSdkVersion to 20
         targetSdkVersion 30 // Change to the desired target SDK version
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -67,3 +67,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

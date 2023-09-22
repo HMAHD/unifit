@@ -1,33 +1,32 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:nowa_runtime/nowa_runtime.dart';
-import 'package:unifit/pages/dashboard.dart'; // Import the dashboard page
+import 'package:unifit/Auth/user_auth/presentation/pages/login_page.dart';
 
 @NowaClass()
 class introPage extends StatelessWidget {
-  const introPage({Key? key}) : super(key: key);
+  const introPage({Key? key, required LoginPage child}) : super(key: key);
 
-  void navigateToDashboard(BuildContext context) {
+  void navigateToLoginPage(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Dashboard()),
+      MaterialPageRoute(builder: (context) => const LoginPage()),
     );
   }
 
   Future<void> automaticNavigation(BuildContext context) async {
     await Future.delayed(const Duration(seconds: 3));
-    navigateToDashboard(context);
+    navigateToLoginPage(context);
   }
 
   @override
   Widget build(BuildContext context) {
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       automaticNavigation(context);
     });
 
     return GestureDetector(
-      onTap: () => navigateToDashboard(context),
+      onTap: () => navigateToLoginPage(context),
       child: Scaffold(
         body: Stack(
           fit: StackFit.expand,
@@ -80,8 +79,14 @@ class introPage extends StatelessWidget {
                 colorBlendMode: BlendMode.saturation,
               ),
             ),
+            //add your logo here
+            Positioned(
+              top: 680,
+              width: 120,
+              height: 120,
+              child: Center(child: Image(image: AssetImage('assets/nsbm.png'))),
+            ),
           ],
-
         ),
       ),
     );

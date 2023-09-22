@@ -10,6 +10,8 @@ class CustomTextField extends StatelessWidget {
     required this.isObscure,
     // required this.controller,
     required this.icon,
+    required InputDecoration decoration,
+    required TextInputType keyboadType,
   });
 
   final String title;
