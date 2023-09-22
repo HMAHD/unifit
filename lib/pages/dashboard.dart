@@ -1,9 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:unifit/pages/scanner.dart';
+import 'package:unifit/backend/auth.dart'; // Import your auth.dart file
+import 'package:unifit/pages/gym_scanner.dart';
+import 'package:unifit/pages/pool_scanner.dart';
 import 'package:unifit/pages/user_profile.dart';
 
+import '../Auth/user_auth/presentation/pages/login_page.dart';
 import '../widgets/drawer_menu.dart';
+
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  final AuthService _auth = AuthService(); // Initialize the AuthService
+
+  bool isAuthenticated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkAuthStatus();
+  }
+
+  Future<void> checkAuthStatus() async {
+    final authenticated = await _auth.isUserAuthenticated();
+    setState(() {
+      isAuthenticated = authenticated;
+    });
+
+    // If the user is not authenticated, navigate to the login page
+    if (!isAuthenticated) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                LoginPage()), // Replace with your login page widget
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (isAuthenticated) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Authenticated Page'),
+        ),
+        body: Center(
+          child: Text('This is an authenticated page.'),
+        ),
+      );
+    } else {
+      // The user will be redirected to the login page
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Not Authenticated Page'),
+        ),
+        body: Center(
+          child:
+              CircularProgressIndicator(), // You can show a loading indicator here
+        ),
+      );
+    }
+  }
+}
 // Adjust the import path based on your project structure
 
 /// Represents the UI of a dashboard screen in a Flutter application.
@@ -129,7 +191,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   SizedBox(height: 12),
                   Text(
-                    'Account ID: 1234567890',
+                    'Account ID: 0000000001',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -260,7 +322,7 @@ class _DashboardState extends State<Dashboard> {
                       final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QRScannerScreen(),
+                          builder: (context) => QRCodeScannerPage(),
                         ),
                       );
 
@@ -322,7 +384,7 @@ class _DashboardState extends State<Dashboard> {
                       final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QRScannerScreen(),
+                          builder: (context) => PoolQRScanner(),
                         ),
                       );
 

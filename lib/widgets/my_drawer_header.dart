@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Authentication
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:unifit/pages/edit_profile.dart';
@@ -10,6 +11,30 @@ class MyHeaderDrawer extends StatefulWidget {
 }
 
 class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
+  String? _userName; // To store the user's username
+  String? _email; // To store the user's email
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData(); // Fetch user data when the widget is initialized
+  }
+
+  Future<void> _fetchUserData() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        setState(() {
+          _userName =
+              user.displayName ?? 'Akash Hasendra'; // Display name or default
+          _email = user.email ?? 'akash@gmail.com'; // Email or default
+        });
+      }
+    } catch (e) {
+      print("Error fetching user data: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,50 +42,55 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
       width: double.infinity,
       height: 200,
       padding: const EdgeInsets.only(top: 20.0),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 10.0),
-          height: 70,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: AssetImage('assets/Avatar.png'),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 10.0),
+            height: 70,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage('assets/Avatar.png'),
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 25.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.values[2],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('John Doe',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w600)),
+              Text(
+                _userName ?? 'Akash Hasendra',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const EditProfile()),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                  )),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditProfile(),
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
-        ),
-        const Text(
-          'Johndoe@gmail.com',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
+          Text(
+            _email ?? 'Johndoe@gmail.com',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

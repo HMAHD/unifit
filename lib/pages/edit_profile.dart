@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
@@ -69,10 +70,10 @@ class _EditProfileState extends State<EditProfile> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const Dashboard()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(width, height / 13),

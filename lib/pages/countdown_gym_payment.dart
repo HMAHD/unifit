@@ -1,5 +1,8 @@
+//tharusha
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:unifit/pages/dashboard.dart';
 import 'package:unifit/pages/user_profile.dart';
 import 'package:unifit/widgets/drawer_menu.dart';
 
@@ -11,6 +14,20 @@ class CountGym extends StatefulWidget {
 }
 
 class _CountGymState extends State<CountGym> {
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  late QRViewController controller;
+  bool qrResult = false;
+  final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
+      GlobalKey<ScaffoldMessengerState>();
+
+  void showPaymentSuccessMessage() {
+    const snackBar = SnackBar(
+      content: Text('Payment Successful!'),
+      duration: Duration(seconds: 3), // Adjust the duration as needed
+    );
+    _scaffoldKey.currentState?.showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -20,7 +37,7 @@ class _CountGymState extends State<CountGym> {
       body: Column(
         children: [
           const SizedBox(
-            height: 35,
+            height: 30,
           ),
           getCustomAppBar(context),
           Stack(
@@ -33,7 +50,7 @@ class _CountGymState extends State<CountGym> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: SizedBox(
-                            height: height / 1.8,
+                            height: height / 1.6,
                             width: width,
                             child: Card(
                                 margin: const EdgeInsets.only(top: 10),
@@ -151,7 +168,29 @@ class _CountGymState extends State<CountGym> {
                                       height: 55,
                                       width: 50,
                                       child: ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              backgroundColor:
+                                                  HexColor('14a49c'),
+                                              content: const Center(
+                                                child: Text(
+                                                  'Payment Successful !',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontFamily: 'Poppins',
+                                                  ),
+                                                ),
+                                              ),
+                                              duration: const Duration(
+                                                  seconds:
+                                                      3), // Adjust the duration as needed
+                                            ),
+                                          );
+                                        },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromRGBO(
                                               28, 232, 164, 1.000),
@@ -172,6 +211,42 @@ class _CountGymState extends State<CountGym> {
                                       ),
                                     ),
                                   ),
+                                  Positioned(
+                                    top: 430,
+                                    left: 25,
+                                    right: 20,
+                                    child: SizedBox(
+                                      height: 55,
+                                      width: 50,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Dashboard()),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: HexColor('19a49c'),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          'Back to Dashboard',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: HexColor('#ffffff'),
+                                            fontSize: 20,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  //Positioned()
                                 ]))),
                       ),
                     ],
